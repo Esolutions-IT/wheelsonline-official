@@ -66,6 +66,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'profile_picture' => './resources/assets/images/profile_picture/profiel.png'
         ]);
     }
 }
