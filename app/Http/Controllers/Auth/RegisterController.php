@@ -51,6 +51,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'profile_picture' => './resources/assets/images/profile_picture/profiel.png'
         ]);
     }
 
@@ -66,7 +67,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'profile_picture' => './resources/assets/images/profile_picture/profiel.png'
+            'profile_picture' => $data['profile_picture'],
         ]);
     }
 }
