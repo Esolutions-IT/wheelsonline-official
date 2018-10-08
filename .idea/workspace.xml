@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e587efff-6cd3-4198-aaa5-e594b7e99a53" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.php" afterPath="$PROJECT_DIR$/config/database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/velgen-site/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/velgen-site/home.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,14 +16,24 @@
       <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/velgen-site/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="408" column="162" lean-forward="false" selection-start-line="408" selection-start-column="162" selection-end-line="408" selection-end-column="162" />
+            <state relative-caret-position="594">
+              <caret line="601" column="80" lean-forward="false" selection-start-line="601" selection-start-column="80" selection-end-line="601" selection-end-column="80" />
               <folding>
-                <marker date="1538642196107" expanded="false" signature="32097:32138" ph="..." />
-                <marker date="1538642196107" expanded="false" signature="32260:32314" ph="..." />
-                <marker date="1538642196107" expanded="false" signature="32532:32574" ph="..." />
-                <marker date="1538642196107" expanded="false" signature="32697:32751" ph="..." />
+                <marker date="1538743315427" expanded="false" signature="44168:44209" ph="..." />
+                <marker date="1538743315427" expanded="false" signature="44331:44385" ph="..." />
+                <marker date="1538743315427" expanded="false" signature="44603:44645" ph="..." />
+                <marker date="1538743315427" expanded="false" signature="44768:44822" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bonnummer.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../wegschrijven/bonnummer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="2" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -43,13 +52,13 @@
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-664">
-              <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+              <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
@@ -189,11 +198,11 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/VelgenController.php" />
         <option value="$PROJECT_DIR$/public/css/velgenstyle.css" />
         <option value="$PROJECT_DIR$/resources/assets/sass/slider_velgen.scss" />
-        <option value="$PROJECT_DIR$/resources/views/velgen-site/home.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
         <option value="$PROJECT_DIR$/config/database.php" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/resources/views/velgen-site/home.blade.php" />
       </list>
     </option>
   </component>
@@ -467,12 +476,12 @@
       <workItem from="1537865140352" duration="5356000" />
       <workItem from="1537893570701" duration="30561000" />
       <workItem from="1538124694276" duration="41752000" />
-      <workItem from="1538668377318" duration="1558000" />
+      <workItem from="1538668377318" duration="4106000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247706000" />
+    <option name="totallyTimeSpent" value="250254000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1929" y="-9" width="1938" height="1058" extended-state="6" />
@@ -511,13 +520,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="301" column="72" lean-forward="false" selection-start-line="301" selection-start-column="72" selection-end-line="301" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/contact.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="642">
@@ -616,19 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/velgen-site/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="408" column="162" lean-forward="false" selection-start-line="408" selection-start-column="162" selection-end-line="408" selection-end-column="162" />
-          <folding>
-            <marker date="1538642196107" expanded="false" signature="32097:32138" ph="..." />
-            <marker date="1538642196107" expanded="false" signature="32260:32314" ph="..." />
-            <marker date="1538642196107" expanded="false" signature="32532:32574" ph="..." />
-            <marker date="1538642196107" expanded="false" signature="32697:32751" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1206">
@@ -650,7 +639,7 @@
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-664">
-          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -683,6 +672,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="16" column="38" lean-forward="false" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/velgen-site/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="601" column="80" lean-forward="false" selection-start-line="601" selection-start-column="80" selection-end-line="601" selection-end-column="80" />
+          <folding>
+            <marker date="1538743315427" expanded="false" signature="44168:44209" ph="..." />
+            <marker date="1538743315427" expanded="false" signature="44331:44385" ph="..." />
+            <marker date="1538743315427" expanded="false" signature="44603:44645" ph="..." />
+            <marker date="1538743315427" expanded="false" signature="44768:44822" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wegschrijven/bonnummer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="2" />
           <folding />
         </state>
       </provider>

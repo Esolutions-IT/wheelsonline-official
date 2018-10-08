@@ -176,7 +176,27 @@
 			}
 			#BMW_SERIE4_ID{
 				display:none;
-				margin-top:-134px;
+				margin-top:-166px;
+			}
+			#BMW_SERIE5_ID{
+				display:none;
+				margin-top:-198px;
+			}
+			#BMW_SERIE6_ID{
+				display:none;
+				margin-top:-230px;
+			}
+			#BMW_SERIE7_ID{
+				display:none;
+				margin-top:-261.5px;
+			}
+			#BMW_X_ID{
+				display:none;
+				margin-top:-293px;
+			}
+			#BMW_X1_ID{
+				display:none;
+				margin-top:-293px;
 			}
 		</style>
     </head>
@@ -421,35 +441,75 @@
 				</div>
 
 				<div class="col-md-3">
-					<button type="button" class="btn btn-link" style="font-size:12px;text-decoration: none; color:black; margin-left:50px;">BMW 5 serie<i class="fa fa-angle-right" style="margin-left:120.5px; font-size:14px;"></i></button><br />
+					<button type="button" class="btn btn-link" style="font-size:12px;text-decoration: none; color:black; margin-left:50px;" onclick="functionBMWS5()">BMW 5 serie<i class="fa fa-angle-right" style="margin-left:120.5px; font-size:14px;"></i></button><br />
+				</div>
+				<div class="col-md-9" id="BMW_SERIE5_ID" onmouseover="functionMega()" onmouseout="functionMegaout()">
+					<img class="img-responsive" src="{{asset('public/images/placeholder1.png')}}" style="position:absolute; width:700px; height:150px; margin-left:50px;">
+					<h1 style="position:absolute;font-size:20px; margin-left:50px; margin-top:180px;">BMW 5 serie</h1>
+					<a href="#"><h1 style="position:absolute; font-size:12px; margin-left:50px; margin-top:210px;">Ga erheen »</h1></a>
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:50px; margin-top:240px;">
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:320px; margin-top:240px;">
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:580px; margin-top:240px;">
 				</div>
 
 				<div class="col-md-12">
 				</div>
 
 				<div class="col-md-3">
-					<button type="button" class="btn btn-link" style="font-size:12px;text-decoration: none; color:black; margin-left:50px;">BMW 6 serie<i class="fa fa-angle-right" style="margin-left:120.5px; font-size:14px;"></i></button><br />
+					<button type="button" class="btn btn-link" style="font-size:12px;text-decoration: none; color:black; margin-left:50px;" onclick="functionBMWS6()">BMW 6 serie<i class="fa fa-angle-right" style="margin-left:120.5px; font-size:14px;"></i></button><br />
+				</div>
+				<div class="col-md-9" id="BMW_SERIE6_ID" onmouseover="functionMega()" onmouseout="functionMegaout()">
+					<img class="img-responsive" src="{{asset('public/images/placeholder1.png')}}" style="position:absolute; width:700px; height:150px; margin-left:50px;">
+					<h1 style="position:absolute;font-size:20px; margin-left:50px; margin-top:180px;">BMW 6 serie</h1>
+					<a href="#"><h1 style="position:absolute; font-size:12px; margin-left:50px; margin-top:210px;">Ga erheen »</h1></a>
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:50px; margin-top:240px;">
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:320px; margin-top:240px;">
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:580px; margin-top:240px;">
 				</div>
 
 				<div class="col-md-12">
 				</div>
 
 				<div class="col-md-3">
-					<button type="button" class="btn btn-link" style="font-size:12px;text-decoration: none; color:black; margin-left:50px;">BMW 7 serie<i class="fa fa-angle-right" style="margin-left:120.5px; font-size:14px;"></i></button><br />
+					<button type="button" class="btn btn-link" style="font-size:12px;text-decoration: none; color:black; margin-left:50px;" onclick="functionBMWS7()">BMW 7 serie<i class="fa fa-angle-right" style="margin-left:120.5px; font-size:14px;"></i></button><br />
+				</div>
+				<div class="col-md-9" id="BMW_SERIE7_ID" onmouseover="functionMega()" onmouseout="functionMegaout()">
+					<img class="img-responsive" src="{{asset('public/images/placeholder1.png')}}" style="position:absolute; width:700px; height:150px; margin-left:50px;">
+					<h1 style="position:absolute;font-size:20px; margin-left:50px; margin-top:180px;">BMW 7 serie</h1>
+					<a href="#"><h1 style="position:absolute; font-size:12px; margin-left:50px; margin-top:210px;">Ga erheen »</h1></a>
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:50px; margin-top:240px;">
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:320px; margin-top:240px;">
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:580px; margin-top:240px;">
 				</div>
 
 				<div class="col-md-12">
 				</div>
 
 				<div class="col-md-3">
-					<button type="button" class="btn btn-link" style="text-decoration: none; color:black;">BMW X<i class="fa fa-angle-right" style="margin-left:193px;"></i></button><br />
+					<button type="button" class="btn btn-link" style="text-decoration: none; color:black;" onclick="functionBMWSX()">BMW X<i class="fa fa-angle-right" style="margin-left:193px;"></i></button><br />
+				</div>
+				<div class="col-md-9" id="BMW_X_ID" onmouseover="functionMega()" onmouseout="functionMegaout()">
+					<img class="img-responsive" src="{{asset('public/images/placeholder1.png')}}" style="position:absolute; width:700px; height:150px; margin-left:50px;">
+					<h1 style="position:absolute;font-size:20px; margin-left:50px; margin-top:180px;">BMW X</h1>
+					<a href="#"><h1 style="position:absolute; font-size:12px; margin-left:50px; margin-top:210px;">Ga erheen »</h1></a>
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:50px; margin-top:240px;">
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:320px; margin-top:240px;">
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:580px; margin-top:240px;">
 				</div>
 
 				<div class="col-md-12">
 				</div>
 
 				<div class="col-md-3">
-					<button type="button" class="btn btn-link" style="font-size:12px;text-decoration: none; color:black; margin-left:50px;">BMW X1<i class="fa fa-angle-right" style="margin-left:146px; font-size:14px;"></i></button><br />
+					<button type="button" class="btn btn-link" style="font-size:12px;text-decoration: none; color:black; margin-left:50px;" onclick="functionBMWSX1()">BMW X1<i class="fa fa-angle-right" style="margin-left:146px; font-size:14px;"></i></button><br />
+				</div>
+				<div class="col-md-9" id="BMW_X1_ID" onmouseover="functionMega()" onmouseout="functionMegaout()">
+					<img class="img-responsive" src="{{asset('public/images/placeholder1.png')}}" style="position:absolute; width:700px; height:150px; margin-left:50px;">
+					<h1 style="position:absolute;font-size:20px; margin-left:50px; margin-top:180px;">BMW X1</h1>
+					<a href="#"><h1 style="position:absolute; font-size:12px; margin-left:50px; margin-top:210px;">Ga erheen »</h1></a>
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:50px; margin-top:240px;">
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:320px; margin-top:240px;">
+					<img class="img-responsive" src="{{asset('public/images/placeholder_round.png')}}" style="position:absolute; width:150px; margin-left:580px; margin-top:240px;">
 				</div>
 
 				<div class="col-md-12">
@@ -535,6 +595,11 @@
                     document.getElementById("BMW_SERIE2_ID").style.display = "none";
                     document.getElementById("BMW_SERIE3_ID").style.display = "none";
                     document.getElementById("BMW_SERIE4_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE5_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE6_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE7_ID").style.display = "none";
+                    document.getElementById("BMW_X_ID").style.display = "none";
+                    document.getElementById("BMW_X1_ID").style.display = "none";
 				}
 
 				function functionBMWS(){
@@ -544,6 +609,11 @@
                     document.getElementById("BMW_SERIE2_ID").style.display = "none";
                     document.getElementById("BMW_SERIE3_ID").style.display = "none";
                     document.getElementById("BMW_SERIE4_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE5_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE6_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE7_ID").style.display = "none";
+                    document.getElementById("BMW_X_ID").style.display = "none";
+                    document.getElementById("BMW_X1_ID").style.display = "none";
 				}
 
 				function functionBMWS1(){
@@ -553,6 +623,11 @@
                     document.getElementById("BMW_SERIE2_ID").style.display = "none";
                     document.getElementById("BMW_SERIE3_ID").style.display = "none";
                     document.getElementById("BMW_SERIE4_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE5_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE6_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE7_ID").style.display = "none";
+                    document.getElementById("BMW_X_ID").style.display = "none";
+                    document.getElementById("BMW_X1_ID").style.display = "none";
 				}
 				function functionBMWS2(){
                     document.getElementById("BMW_SERIE2_ID").style.display = "block";
@@ -561,6 +636,11 @@
 					document.getElementById("NP_ID").style.display = "none";
                     document.getElementById("BMW_SERIE3_ID").style.display = "none";
                     document.getElementById("BMW_SERIE4_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE5_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE6_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE7_ID").style.display = "none";
+                    document.getElementById("BMW_X_ID").style.display = "none";
+                    document.getElementById("BMW_X1_ID").style.display = "none";
 				}
 				function functionBMWS3(){
                     document.getElementById("BMW_SERIE3_ID").style.display = "block";
@@ -569,9 +649,84 @@
 					document.getElementById("BMW_SERIE_ID").style.display = "none";
 					document.getElementById("NP_ID").style.display = "none";
                     document.getElementById("BMW_SERIE4_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE5_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE6_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE7_ID").style.display = "none";
+                    document.getElementById("BMW_X_ID").style.display = "none";
+                    document.getElementById("BMW_X1_ID").style.display = "none";
 				}
 				function functionBMWS4(){
                     document.getElementById("BMW_SERIE4_ID").style.display = "block";
+					document.getElementById("BMW_SERIE3_ID").style.display = "none";
+					document.getElementById("BMW_SERIE2_ID").style.display = "none";
+					document.getElementById("BMW_SERIE1_ID").style.display = "none";
+					document.getElementById("BMW_SERIE_ID").style.display = "none";
+					document.getElementById("NP_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE5_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE6_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE7_ID").style.display = "none";
+                    document.getElementById("BMW_X_ID").style.display = "none";
+                    document.getElementById("BMW_X1_ID").style.display = "none";
+				}
+				function functionBMWS5(){
+                    document.getElementById("BMW_SERIE5_ID").style.display = "block";
+					document.getElementById("BMW_SERIE4_ID").style.display = "none";
+					document.getElementById("BMW_SERIE3_ID").style.display = "none";
+					document.getElementById("BMW_SERIE2_ID").style.display = "none";
+					document.getElementById("BMW_SERIE1_ID").style.display = "none";
+					document.getElementById("BMW_SERIE_ID").style.display = "none";
+					document.getElementById("NP_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE6_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE7_ID").style.display = "none";
+                    document.getElementById("BMW_X_ID").style.display = "none";
+                    document.getElementById("BMW_X1_ID").style.display = "none";
+				}
+				function functionBMWS6(){
+                    document.getElementById("BMW_SERIE6_ID").style.display = "block";
+					document.getElementById("BMW_SERIE5_ID").style.display = "none";
+					document.getElementById("BMW_SERIE4_ID").style.display = "none";
+					document.getElementById("BMW_SERIE3_ID").style.display = "none";
+					document.getElementById("BMW_SERIE2_ID").style.display = "none";
+					document.getElementById("BMW_SERIE1_ID").style.display = "none";
+					document.getElementById("BMW_SERIE_ID").style.display = "none";
+					document.getElementById("NP_ID").style.display = "none";
+                    document.getElementById("BMW_SERIE7_ID").style.display = "none";
+                    document.getElementById("BMW_X_ID").style.display = "none";
+                    document.getElementById("BMW_X1_ID").style.display = "none";
+				}
+				function functionBMWS7(){
+                    document.getElementById("BMW_SERIE7_ID").style.display = "block";
+					document.getElementById("BMW_SERIE6_ID").style.display = "none";
+					document.getElementById("BMW_SERIE5_ID").style.display = "none";
+					document.getElementById("BMW_SERIE4_ID").style.display = "none";
+					document.getElementById("BMW_SERIE3_ID").style.display = "none";
+					document.getElementById("BMW_SERIE2_ID").style.display = "none";
+					document.getElementById("BMW_SERIE1_ID").style.display = "none";
+					document.getElementById("BMW_SERIE_ID").style.display = "none";
+					document.getElementById("NP_ID").style.display = "none";
+                    document.getElementById("BMW_X_ID").style.display = "none";
+                    document.getElementById("BMW_X1_ID").style.display = "none";
+				}
+				function functionBMWSX(){
+                    document.getElementById("BMW_X_ID").style.display = "block";
+					document.getElementById("BMW_SERIE7_ID").style.display = "none";
+					document.getElementById("BMW_SERIE6_ID").style.display = "none";
+					document.getElementById("BMW_SERIE5_ID").style.display = "none";
+					document.getElementById("BMW_SERIE4_ID").style.display = "none";
+					document.getElementById("BMW_SERIE3_ID").style.display = "none";
+					document.getElementById("BMW_SERIE2_ID").style.display = "none";
+					document.getElementById("BMW_SERIE1_ID").style.display = "none";
+					document.getElementById("BMW_SERIE_ID").style.display = "none";
+					document.getElementById("NP_ID").style.display = "none";
+                    document.getElementById("BMW_X1_ID").style.display = "none";
+				}
+				function functionBMWSX1(){
+                    document.getElementById("BMW_X1_ID").style.display = "block";
+					document.getElementById("BMW_X_ID").style.display = "none";
+					document.getElementById("BMW_SERIE7_ID").style.display = "none";
+					document.getElementById("BMW_SERIE6_ID").style.display = "none";
+					document.getElementById("BMW_SERIE5_ID").style.display = "none";
+					document.getElementById("BMW_SERIE4_ID").style.display = "none";
 					document.getElementById("BMW_SERIE3_ID").style.display = "none";
 					document.getElementById("BMW_SERIE2_ID").style.display = "none";
 					document.getElementById("BMW_SERIE1_ID").style.display = "none";
