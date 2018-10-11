@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('landing');
 
+/*Velgen home */
 Route::get('/velgen-home/{lang?}', function (Request $request) {
     if($request->lang<> '')
     {
@@ -26,7 +27,60 @@ Route::get('/velgen-home/{lang?}', function (Request $request) {
     return view('velgen.home');
 })->name('velgen_home');
 
-Route::get('/over-ons/{lang?}', function (Request $request) {
+/*Velgen Over Ons */
+Route::get('/velgen/over-ons/{lang?}', function (Request $request) {
+    if($request->lang<> '')
+    {
+        app()->setLocale($request->lang);
+    }
+
+    return view('velgen-site.over-ons');
+})->name('velgen_overons');
+
+/*Velgen Contact */
+Route::get('/velgen/contact/{lang?}', function (Request $request) {
+    if($request->lang<> '')
+    {
+        app()->setLocale($request->lang);
+    }
+
+    return view('velgen-site.contact');
+})->name('velgen_contact');
+
+/*Velgen Algemene voorwaarden */
+Route::get('/velgen/algemene-voorwaarden/{lang?}', function (Request $request) {
+    if($request->lang<> '')
+    {
+        app()->setLocale($request->lang);
+    }
+
+    return view('velgen-site.algemene-voorwaarden');
+})->name('velgen_algemenevoorwaarden');
+
+/*Velgen Privacy Beleid */
+Route::get('/velgen/privacy/{lang?}', function (Request $request) {
+    if($request->lang<> '')
+    {
+        app()->setLocale($request->lang);
+    }
+
+    return view('velgen-site.privacy');
+})->name('velgen_privacy');
+
+/*Velgen Verzenden & retourneren */
+Route::get('/velgen/verzenden-retourneren/{lang?}', function (Request $request) {
+    if($request->lang<> '')
+    {
+        app()->setLocale($request->lang);
+    }
+
+    return view('velgen-site.verzenden-retourneren');
+})->name('velgen_orders');
+
+
+
+/*Contact */
+Route::get('/contact/{lang?}', function (Request $request) {
     if($request->lang<> '')
     {
         app()->setLocale($request->lang);
@@ -50,8 +104,8 @@ Route::get('/contact/{lang?}', function (Request $request) {
     return view('contact');
 })->name('contact');
 
-Route::get('/velgen/home', 'VelgenController@index')->name('velgen-site');
 
+Route::get('/velgen/home', 'VelgenController@index')->name('velgen-site');
 
 
 Auth::routes();
@@ -62,15 +116,7 @@ Route::post('/language', array(
   'Middleware'=>'LanguageSwitcher',
   'uses'=>'LanguageLocalizationController@index'
 ));
-Route::post('/admin/opslaan/categorie', 'AdminController@categorie_opslaan')->name('categorie_opslaan');
-Route::post('/admin/opslaan/users', 'AdminController@users_opslaan')->name('users_opslaan');
-Route::post('/admin/opslaan/velgen', 'AdminController@velgen_opslaan')->name('velgen_opslaan');
-Route::get('/admin/categories', 'AdminController@categorie')->name('categorie');
-Route::get('/admin/users/admin', 'AdminController@adminusers')->name('admin_users');
-Route::get('/admin/users/gebruiker', 'AdminController@gebruikerusers')->name('gebruiker_users');
-Route::get('/admin/users', 'AdminController@users')->name('users');
 
 Route::get('/{lang?}', 'LanguageLocalizationController@index');
 Route::get('/admin/{id}', 'AdminController@index')->name('admin');
-
 
