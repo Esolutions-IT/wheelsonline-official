@@ -1500,11 +1500,12 @@
 							<div class="footer">
 								<h3 class="footer-title">Information</h3>
 								<ul class="footer-links">
-									<li><a href="#">About Us</a></li>
-									<li><a href="#">Contact Us</a></li>
-									<li><a href="#">Privacy Policy</a></li>
-									<li><a href="#">Orders and Returns</a></li>
-									<li><a href="#">Terms & Conditions</a></li>
+									<li><a href="{{route('velgen_home')}}">Home</a></li>
+									<li><a href="{{route('velgen_overons')}}">Over Ons</a></li>
+									<li><a href="h{{route('velgen_contact')}}">Contact</a></li>
+									<li><a href="{{route('velgen_privacy')}}">Privacy Policy</a></li>
+									<li><a href="{{route('velgen_orders')}}">Orders and Returns</a></li>
+									<li><a href="{{route('velgen_algemenevoorwaarden')}}">Terms & Conditions</a></li>
 								</ul>
 							</div>
 						</div>
