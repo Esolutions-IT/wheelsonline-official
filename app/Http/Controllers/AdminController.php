@@ -21,6 +21,9 @@ class AdminController extends Controller
         return view('admin.admin', compact('producten_velgen', 'category_producten', 'id'));
     }
 
+    public function adminportal(){
+        return view('admin-portal.home');
+}
     public function categorie(){
 
         $category_producten = DB::table('producten_category')->get();
@@ -94,4 +97,6 @@ class AdminController extends Controller
 
         return view('admin.velg-opslaan', compact('producten_velgen', 'category_producten'));
     }
+
 }
+

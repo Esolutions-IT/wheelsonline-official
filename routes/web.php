@@ -117,6 +117,7 @@ Route::post('/language', array(
   'uses'=>'LanguageLocalizationController@index'
 ));
 
+Route::get('/admin-portal/home', 'AdminController@adminportal')->name('admin-portal');
 Route::get('/{lang?}', 'LanguageLocalizationController@index');
 Route::get('/admin/{id}', 'AdminController@index')->name('admin');
 
