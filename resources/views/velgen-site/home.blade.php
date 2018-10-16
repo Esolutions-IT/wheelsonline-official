@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Electro - HTML Ecommerce Template</title>
+		<title>Wheelsonline</title>
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -136,7 +136,7 @@
 				width:70%;
 				height:450px;
 				margin-left:50px;
-				display: block;
+				display: none;
 				color:#fff!important;
 				padding:2em;
 				border-bottom: 1px solid black;
@@ -145,11 +145,11 @@
 				overflow-y: scroll;
 			}
 
-			/*nav li:hover .menu-sub{*/
-				/*display:block;*/
-			/*}*/
+			nav li:hover .menu-sub{
+				display:none;
+			}
 			.menu-sub li{
-				display:block;
+				display:none;
 			}
 			button:hover{
 				opacity:0.5;
@@ -579,14 +579,14 @@
 				</div>
 
 			<script>
-//				function functionMega() {
-//					document.getElementById("menu_sub").style.display = "block";
-//                    document.getElementById("content-page").style.opacity = "0.5";
-//                }
-//                function functionMegaout() {
-//                    document.getElementById("menu_sub").style.display = "none";
-//                    document.getElementById("content-page").style.opacity = "1";
-//                }
+				function functionMega() {
+					document.getElementById("menu_sub").style.display = "block";
+                    document.getElementById("content-page").style.opacity = "0.5";
+                }
+                function functionMegaout() {
+                    document.getElementById("menu_sub").style.display = "none";
+                    document.getElementById("content-page").style.opacity = "1";
+}
 
 				function functionNP(){
                     document.getElementById("NP_ID").style.display = "block";
