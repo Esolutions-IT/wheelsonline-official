@@ -10,6 +10,15 @@
     <link rel="stylesheet" href="{{asset('public/css/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/vendor.bundle.base.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/vendor.bundle.base.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/demo.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/linearicons/icons.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/font-awesome.min.css')}}">
+
+    <link rel="stylesheet" href="{{asset('public/css/chartist-custom.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/bootstrap.min.css')}}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- endinject -->
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -17,6 +26,12 @@
     <link rel="stylesheet" href="{{asset('public/css/admin-portal.css')}}">
     <!-- endinject -->
     <link rel="shortcut icon" href="images/favicon.png" />
+
+    <style>
+        .panel{
+            width:600px!important;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,7 +40,7 @@
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
             <a class="navbar-brand brand-logo" href="index.html">
-                <img src="{{asset('public/images/logo.svg')}}" alt="logo" />
+                <img src="{{asset('public/images/logo-wheelsonline.PNG')}}" alt="logo" style="width:200px; height:55px;"/>
             </a>
             <a class="navbar-brand brand-logo-mini" href="index.html">
                 <img src="images/logo-mini.svg" alt="logo" />
@@ -371,7 +386,7 @@
                                     <div class="float-right">
                                         <p class="mb-0 text-right">Users</p>
                                         <div class="fluid-container">
-                                            <h3 class="font-weight-medium text-right mb-0">$65,650</h3>
+                                            <h3 class="font-weight-medium text-right mb-0">{{$count}}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -411,7 +426,7 @@
                                     <div class="float-right">
                                         <p class="mb-0 text-right">Producten</p>
                                         <div class="fluid-container">
-                                            <h3 class="font-weight-medium text-right mb-0">5693</h3>
+                                            <h3 class="font-weight-medium text-right mb-0">{{$count_products}}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -542,52 +557,50 @@
                         </div>
                         <!--weather card ends-->
                     </div>
-                    <div class="col-lg-5 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="card-title text-primary mb-5">Performance History</h2>
-                                <div class="wrapper d-flex justify-content-between">
-                                    <div class="side-left">
-                                        <p class="mb-2">The best performance</p>
-                                        <p class="display-3 mb-4 font-weight-light">+45.2%</p>
-                                    </div>
-                                    <div class="side-right">
-                                        <small class="text-muted">2017</small>
+                        <div class="col-lg-5 grid-margin stretch-card">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Recent aangemaakte Users</h3>
+                                    <div class="right">
+                                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                                        <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
                                     </div>
                                 </div>
-                                <div class="wrapper d-flex justify-content-between">
-                                    <div class="side-left">
-                                        <p class="mb-2">Worst performance</p>
-                                        <p class="display-3 mb-5 font-weight-light">-35.3%</p>
-                                    </div>
-                                    <div class="side-right">
-                                        <small class="text-muted">2015</small>
-                                    </div>
+                                <div class="panel-body no-padding" id="panel_body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>User ID</th>
+                                            <th>Volledige Naam</th>
+                                            <th>Telefoon</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($week as $weeks)
+                                        <tr>
+                                            <td><a href="#">{{$weeks->id}}</a></td>
+                                            <td>{{$weeks->name}}</td>
+                                            <td>{{$weeks->telefoon}}</td>
+                                            <td>{{$weeks->email}}</td>
+                                            <td><span class="label label-success">COMPLETED</span></td>
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="wrapper">
-                                    <div class="d-flex justify-content-between">
-                                        <p class="mb-2">Sales</p>
-                                        <p class="mb-2 text-primary">88%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 88%" aria-valuenow="88"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="wrapper mt-4">
-                                    <div class="d-flex justify-content-between">
-                                        <p class="mb-2">Visits</p>
-                                        <p class="mb-2 text-success">56%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 56%" aria-valuenow="56"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Laatste 7 dagen</span></div>
+                                        <div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Bekijk alle users</a></div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- END RECENT PURCHASES -->
                         </div>
                     </div>
-                </div>
+
                 <div class="row">
                     <div class="col-md-12 grid-margin">
                         <div class="card">
@@ -958,6 +971,245 @@
 <!-- Custom js for this page-->
 <script src="{{asset('public/js/dashboard.js')}}"></script>
 <!-- End custom js for this page-->
+
+<!-- Javascript -->
+<script src="{{asset('public/js/jquery.min.js')}}"></script>
+<script src="{{asset('public/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('public/js/jquery.slimscroll.min.js')}}"></script>
+<script src="{{asset('public/js/jquery.easypiechart.min.js')}}"></script>
+<script src="{{asset('public/js/chartist.min.js')}}"></script>
+{{--<script src="{{asset('public/js/klorofil-common.js')}}"></script>--}}
+
+<script>
+    $(document).ready(function() {
+
+        /*-----------------------------------/
+        /*	TOP NAVIGATION AND LAYOUT
+        /*----------------------------------*/
+
+        $('.btn-toggle-fullwidth').click(function() {
+            if(!$('body').hasClass('layout-fullwidth')) {
+                $('body').addClass('layout-fullwidth');
+
+            } else {
+                $('body').removeClass('layout-fullwidth');
+                $('body').removeClass('layout-default'); // also remove default behaviour if set
+            }
+
+            $(this).find('.lnr').toggleClass('lnr-arrow-left-circle lnr-arrow-right-circle');
+
+            if($(window).innerWidth() < 1025) {
+                if(!$('body').hasClass('offcanvas-active')) {
+                    $('body').addClass('offcanvas-active');
+                } else {
+                    $('body').removeClass('offcanvas-active');
+                }
+            }
+        });
+
+        $(window).load(function() {
+            if($(window).innerWidth() < 1025) {
+                $('.btn-toggle-fullwidth').find('.icon-arrows')
+                    .removeClass('icon-arrows-move-left')
+                    .addClass('icon-arrows-move-right');
+            }
+
+            // adjust right sidebar top position
+            $('.right-sidebar').css('top', $('.navbar').innerHeight());
+
+            // if page has content-menu, set top padding of main-content
+            if($('.has-content-menu').length > 0) {
+                $('.navbar + .main-content').css('padding-top', $('.navbar').innerHeight());
+            }
+
+            // for shorter main content
+            if($('.main').height() < $('#sidebar-nav').height()) {
+                $('.main').css('min-height', $('#sidebar-nav').height());
+            }
+        });
+
+
+        /*-----------------------------------/
+        /*	SIDEBAR NAVIGATION
+        /*----------------------------------*/
+
+        $('.sidebar a[data-toggle="collapse"]').click(function() {
+            if($(this).hasClass('collapsed')) {
+                $(this).addClass('active');
+            } else {
+                $(this).removeClass('active');
+            }
+        });
+
+        if( $('.sidebar-scroll').length > 0 ) {
+            $('.sidebar-scroll').slimScroll({
+                height: '95%',
+                wheelStep: 2,
+            });
+        }
+
+
+        /*-----------------------------------/
+        /*	PANEL FUNCTIONS
+        /*----------------------------------*/
+
+        // panel remove
+        $('.panel .btn-remove').click(function(e){
+
+            e.preventDefault();
+            $(this).parents('.panel').fadeOut(300, function(){
+                $(this).remove();
+            });
+        });
+
+        // panel collapse/expand
+        var affectedElement = $('.panel-body');
+
+        $('.panel .btn-toggle-collapse').clickToggle(
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( ".panel-body" ).slideUp( "slow", function() {
+                    $('.panel').css('width', '600px');
+                });
+
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            },
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( ".panel-body" ).slideDown( "slow", function(){
+                    $('.panel').css('width', '600px');
+                });
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            }
+        );
+
+
+        /*-----------------------------------/
+        /*	PANEL SCROLLING
+        /*----------------------------------*/
+
+        if( $('.panel-scrolling').length > 0) {
+            $('.panel-scrolling .panel-body').slimScroll({
+                height: '430px',
+                wheelStep: 2,
+            });
+        }
+
+        if( $('#panel-scrolling-demo').length > 0) {
+            $('#panel-scrolling-demo .panel-body').slimScroll({
+                height: '175px',
+                wheelStep: 2,
+            });
+        }
+
+        /*-----------------------------------/
+        /*	TODO LIST
+        /*----------------------------------*/
+
+        $('.todo-list input').change( function() {
+            if( $(this).prop('checked') ) {
+                $(this).parents('li').addClass('completed');
+            }else {
+                $(this).parents('li').removeClass('completed');
+            }
+        });
+
+
+        /*-----------------------------------/
+        /* TOASTR NOTIFICATION
+        /*----------------------------------*/
+
+        if($('#toastr-demo').length > 0) {
+            toastr.options.timeOut = "false";
+            toastr.options.closeButton = true;
+            toastr['info']('Hi there, this is notification demo with HTML support. So, you can add HTML elements like <a href="#">this link</a>');
+
+            $('.btn-toastr').on('click', function() {
+                $context = $(this).data('context');
+                $message = $(this).data('message');
+                $position = $(this).data('position');
+
+                if($context == '') {
+                    $context = 'info';
+                }
+
+                if($position == '') {
+                    $positionClass = 'toast-left-top';
+                } else {
+                    $positionClass = 'toast-' + $position;
+                }
+
+                toastr.remove();
+                toastr[$context]($message, '' , { positionClass: $positionClass });
+            });
+
+            $('#toastr-callback1').on('click', function() {
+                $message = $(this).data('message');
+
+                toastr.options = {
+                    "timeOut": "300",
+                    "onShown": function() { alert('onShown callback'); },
+                    "onHidden": function() { alert('onHidden callback'); }
+                }
+
+                toastr['info']($message);
+            });
+
+            $('#toastr-callback2').on('click', function() {
+                $message = $(this).data('message');
+
+                toastr.options = {
+                    "timeOut": "10000",
+                    "onclick": function() { alert('onclick callback'); },
+                }
+
+                toastr['info']($message);
+
+            });
+
+            $('#toastr-callback3').on('click', function() {
+                $message = $(this).data('message');
+
+                toastr.options = {
+                    "timeOut": "10000",
+                    "closeButton": true,
+                    "onCloseClick": function() { alert('onCloseClick callback'); }
+                }
+
+                toastr['info']($message);
+            });
+        }
+    });
+
+    // toggle function
+    $.fn.clickToggle = function( f1, f2 ) {
+        return this.each( function() {
+            var clicked = false;
+            $(this).bind('click', function() {
+                if(clicked) {
+                    clicked = false;
+                    return f2.apply(this, arguments);
+                }
+
+                clicked = true;
+                return f1.apply(this, arguments);
+            });
+        });
+
+    }
+</script>
 </body>
 
 </html>
