@@ -574,7 +574,7 @@
                                             <th>Volledige Naam</th>
                                             <th>Telefoon</th>
                                             <th>Email</th>
-                                            <th>Status</th>
+                                            {{--<th>Status</th>--}}
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -584,7 +584,7 @@
                                             <td>{{$weeks->name}}</td>
                                             <td>{{$weeks->telefoon}}</td>
                                             <td>{{$weeks->email}}</td>
-                                            <td><span class="label label-success">COMPLETED</span></td>
+                                            {{--<td><span class="label label-success">COMPLETED</span></td>--}}
                                         </tr>
                                         @endforeach
                                         </tbody>
