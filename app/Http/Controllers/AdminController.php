@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\orders;
 use App\products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,10 +28,16 @@ class AdminController extends Controller
     public function adminportal(){
         $count = Surat::count();
         $count_products = products::count();
+        $count_orders = orders::count();
+
+        $count_werknemers = Surat::where('user_level', 'Werknemer')->count();
+
+        $orders = DB::table('orders')->get();
+
         $date = new Carbon\Carbon;
         $date->subWeek();
         $week = DB::table('users')->where('created_at', '>', $date->toDateTimeString())->get();
-        return view('admin-portal.home')->with('count', $count)->with('count_products', $count_products)->with('week', $week);
+        return view('admin-portal.home')->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders);
 }
     public function categorie(){
 

@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{asset('public/css/chartist-custom.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/bootstrap.min.css')}}">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- endinject -->
     <!-- plugin css for this page -->
@@ -28,8 +30,11 @@
     <link rel="shortcut icon" href="images/favicon.png" />
 
     <style>
-        .panel{
-            width:600px!important;
+        /*.panel{*/
+            /*width:600px!important;*/
+        /*}*/
+        .sidebar .nav .nav{
+            background-color:white;
         }
     </style>
 </head>
@@ -121,43 +126,16 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
                         <i class="mdi mdi-bell"></i>
-                        <span class="count">4</span>
+                        <span class="count">{{$count}}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
                         <a class="dropdown-item">
-                            <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
+                            <p class="mb-0 font-weight-normal float-left">Notificaties
                             </p>
-                            <span class="badge badge-pill badge-warning float-right">View all</span>
+                            <span class="badge badge-pill badge-warning float-right">Bekijken</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <div class="preview-icon bg-success">
-                                    <i class="mdi mdi-alert-circle-outline mx-0"></i>
-                                </div>
-                            </div>
-                            <div class="preview-item-content">
-                                <h6 class="preview-subject font-weight-medium text-dark">Application Error</h6>
-                                <p class="font-weight-light small-text">
-                                    Just now
-                                </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <div class="preview-icon bg-warning">
-                                    <i class="mdi mdi-comment-text-outline mx-0"></i>
-                                </div>
-                            </div>
-                            <div class="preview-item-content">
-                                <h6 class="preview-subject font-weight-medium text-dark">Settings</h6>
-                                <p class="font-weight-light small-text">
-                                    Private message
-                                </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
+                        @foreach($week as $users)
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
                                 <div class="preview-icon bg-info">
@@ -165,13 +143,15 @@
                                 </div>
                             </div>
                             <div class="preview-item-content">
-                                <h6 class="preview-subject font-weight-medium text-dark">New user registration</h6>
+                                <h6 class="preview-subject font-weight-medium text-dark">Nieuwe User Registratie</h6>
                                 <p class="font-weight-light small-text">
-                                    2 days ago
+                                    {{$users->name}}
                                 </p>
                             </div>
                         </a>
+                        @endforeach
                     </div>
+
                 </li>
                 <li class="nav-item dropdown d-none d-xl-inline-block">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -237,7 +217,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{route('admin-portal')}}">
                         <i class="menu-icon mdi mdi-television"></i>
                         <span class="menu-title">Dashboard</span>
                     </a>
@@ -370,7 +350,8 @@
               <span class="d-block d-md-flex align-items-center">
                 <p>Welkom op uw dashboard {{auth()->user()->name}}</p>
                 <a class="btn ml-auto download-button d-none d-md-block" href="https://github.com/BootstrapDash/StarAdmin-Free-Bootstrap-Admin-Template" target="_blank">Orders bekijken</a>
-                <a class="btn purchase-button mt-4 mt-md-0" href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Terug naar Home</a>
+                <a class="btn purchase-button mt-4 mt-md-0" href="{{route('landing')}}">Terug naar Home</a>
+                  {{--target="_blank"--}}
                 <i class="mdi mdi-close popup-dismiss d-none d-md-block"></i>
               </span>
                     </div>
@@ -406,7 +387,7 @@
                                     <div class="float-right">
                                         <p class="mb-0 text-right">Orders</p>
                                         <div class="fluid-container">
-                                            <h3 class="font-weight-medium text-right mb-0">3455</h3>
+                                            <h3 class="font-weight-medium text-right mb-0">{{$count_orders}}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -446,7 +427,7 @@
                                     <div class="float-right">
                                         <p class="mb-0 text-right">Werknemers</p>
                                         <div class="fluid-container">
-                                            <h3 class="font-weight-medium text-right mb-0">246</h3>
+                                            <h3 class="font-weight-medium text-right mb-0">{{$count_werknemers}}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -461,7 +442,7 @@
                     <div class="col-lg-7 grid-margin stretch-card" style="height:200px;">
                         <!--weather card-->
                         <div class="card card-weather">
-                            <div class="card-body">
+                            <div class="card-body" id="card_buttons2">
                                 <div class="weather-date-location">
                                     <h3><div id="day"></div></h3>
                                     <p class="text-gray">
@@ -487,78 +468,44 @@
                                 document.getElementById("maand").innerHTML = months[d.getMonth()]+ ", " + d.getFullYear() + " Nederland";
 
                             </script>
-                            <div class="card-body p-0" style="margin-top:-70px;">
+                            <div class="card-body p-0" style="margin-top:-70px;" id="card_buttons">
                                 <div class="d-flex weakly-weather">
-                                    <div class="weakly-weather-item">
-                                        <p class="mb-0">
-                                            Sun
-                                        </p>
-                                        <i class="mdi mdi-weather-cloudy"></i>
-                                        <p class="mb-0">
-                                            30°
-                                        </p>
+                                    <div class="weakly-weather-item" id="users_click">
+                                        <i class="fas fa-users" style="font-size:40px;"></i>
+                                        <p class="mb-1" style="font-size:10px; margin-top:5px;">Users</p>
                                     </div>
-                                    <div class="weakly-weather-item">
-                                        <p class="mb-1">
-                                            Mon
-                                        </p>
-                                        <i class="mdi mdi-weather-hail"></i>
-                                        <p class="mb-0">
-                                            31°
-                                        </p>
+                                    <div class="weakly-weather-item" id="card2">
+                                        <i class="fas fa-award" style="font-size:40px;"></i>
+                                        <p class="mb-1" style="font-size:10px; margin-top:5px;">Rollen</p>
                                     </div>
-                                    <div class="weakly-weather-item">
-                                        <p class="mb-1">
-                                            Tue
-                                        </p>
-                                        <i class="mdi mdi-weather-partlycloudy"></i>
-                                        <p class="mb-0">
-                                            28°
-                                        </p>
+                                    <div class="weakly-weather-item" id="card3">
+                                        <i class="fas fa-check" style="font-size:40px;"></i>
+                                        <p class="mb-1" style="font-size:10px; margin-top:5px;">Orders</p>
                                     </div>
-                                    <div class="weakly-weather-item">
-                                        <p class="mb-1">
-                                            Wed
-                                        </p>
-                                        <i class="mdi mdi-weather-pouring"></i>
-                                        <p class="mb-0">
-                                            30°
-                                        </p>
+                                    <div class="weakly-weather-item" id="card4">
+                                        <i class="far fa-times-circle" style="font-size:40px;"></i>
+                                        <p class="mb-1" style="font-size:9px; margin-top:5px;">Onafgeronde orders</p>
                                     </div>
-                                    <div class="weakly-weather-item">
-                                        <p class="mb-1">
-                                            Thu
-                                        </p>
-                                        <i class="mdi mdi-weather-pouring"></i>
-                                        <p class="mb-0">
-                                            29°
-                                        </p>
+                                    <div class="weakly-weather-item" id="card5">
+                                        <i class="fas fa-cart-arrow-down" style="font-size:40px;"></i>
+                                        <p class="mb-1" style="font-size:10px; margin-top:5px;">Bestsellers</p>
                                     </div>
-                                    <div class="weakly-weather-item">
-                                        <p class="mb-1">
-                                            Fri
-                                        </p>
-                                        <i class="mdi mdi-weather-snowy-rainy"></i>
-                                        <p class="mb-0">
-                                            31°
-                                        </p>
+                                    <div class="weakly-weather-item" id="card6">
+                                        <i class="fas fa-archive" style="font-size:40px;"></i>
+                                        <p class="mb-1" style="font-size:10px; margin-top:5px;">Categorieën</p>
                                     </div>
-                                    <div class="weakly-weather-item">
-                                        <p class="mb-1">
-                                            Sat
-                                        </p>
-                                        <i class="mdi mdi-weather-snowy"></i>
-                                        <p class="mb-0">
-                                            32°
-                                        </p>
+                                    <div class="weakly-weather-item" id="card7">
+                                        <i class="fas fa-book" style="font-size:40px;"></i>
+                                        <p class="mb-1" style="font-size:9px; margin-top:5px;">Nieuwste Producten</p>
                                     </div>
                                 </div>
                             </div>
+                            <i class="fas fa-arrow-right" id="arrow-rightt" style="font-size:30px; display: none"></i>
                         </div>
                         <!--weather card ends-->
                     </div>
-                        <div class="col-lg-5 grid-margin stretch-card">
-                            <div class="panel">
+                        <div class="col-md-5 grid-margin stretch-card">
+                            <div class="panel" id="panel2">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Recent aangemaakte Users</h3>
                                     <div class="right">
@@ -566,7 +513,7 @@
                                         <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
                                     </div>
                                 </div>
-                                <div class="panel-body no-padding" id="panel_body">
+                                <div class="panel-body no-padding" id="panel_body2">
                                     <table class="table table-striped">
                                         <thead>
                                         <tr>
@@ -574,6 +521,7 @@
                                             <th>Volledige Naam</th>
                                             <th>Telefoon</th>
                                             <th>Email</th>
+                                            <th style="display:none;" id="users_straat">Acties</th>
                                             {{--<th>Status</th>--}}
                                         </tr>
                                         </thead>
@@ -584,6 +532,7 @@
                                             <td>{{$weeks->name}}</td>
                                             <td>{{$weeks->telefoon}}</td>
                                             <td>{{$weeks->email}}</td>
+                                            <td id="users_straat2" style="display: none"><i class="fas fa-pen" style="padding-right: 10px;"></i> <i class="far fa-trash-alt" style="padding-right: 10px;"></i> <i class="fas fa-arrow-right"></i></td>
                                             {{--<td><span class="label label-success">COMPLETED</span></td>--}}
                                         </tr>
                                         @endforeach
@@ -600,206 +549,112 @@
                             <!-- END RECENT PURCHASES -->
                         </div>
                     </div>
-
                 <div class="row">
-                    <div class="col-md-12 grid-margin">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row d-none d-sm-flex mb-4">
-                                    <div class="col-4">
-                                        <h5 class="text-primary">Unique Visitors</h5>
-                                        <p>34657</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <h5 class="text-primary">Bounce Rate</h5>
-                                        <p>45673</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <h5 class="text-primary">Active session</h5>
-                                        <p>45673</p>
-                                    </div>
-                                </div>
-                                <div class="chart-container">
-                                    <canvas id="dashboard-area-chart" height="80"></canvas>
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="panel" id="panel" style="width:100%!important;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Orders</h3>
+                                <div class="right">
+                                    <button type="button" class="btn-toggle-collapse2"><i class="lnr lnr-chevron-up"></i></button>
+                                    <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 grid-margin">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Orders</h4>
+                            <div class="panel-body no-padding" id="panel_body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
                                             <th>
-                                                #
+                                                Order ID
+                                            </th>
+
+                                            <th>
+                                                Klant
+                                            </th>
+
+                                            <th>
+                                                Order Status
+
                                             </th>
                                             <th>
-                                                First name
+                                                Betaal status
                                             </th>
                                             <th>
-                                                Progress
+                                                Verzendstatus
                                             </th>
                                             <th>
-                                                Amount
-                                            </th>
-                                            <th>
-                                                Sales
-                                            </th>
-                                            <th>
-                                                Deadline
+                                                Aangemaakt op
                                             </th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td class="font-weight-medium">
-                                                1
-                                            </td>
-                                            <td>
-                                                Herman Beck
-                                            </td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                $ 77.99
-                                            </td>
-                                            <td class="text-danger"> 53.64%
-                                                <i class="mdi mdi-arrow-down"></i>
-                                            </td>
-                                            <td>
-                                                May 15, 2015
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-medium">
-                                                2
-                                            </td>
-                                            <td>
-                                                Messsy Adam
-                                            </td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                $245.30
-                                            </td>
-                                            <td class="text-success"> 24.56%
-                                                <i class="mdi mdi-arrow-up"></i>
-                                            </td>
-                                            <td>
-                                                July 1, 2015
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-medium">
-                                                3
-                                            </td>
-                                            <td>
-                                                John Richards
-                                            </td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                $138.00
-                                            </td>
-                                            <td class="text-danger"> 28.76%
-                                                <i class="mdi mdi-arrow-down"></i>
-                                            </td>
-                                            <td>
-                                                Apr 12, 2015
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-medium">
-                                                4
-                                            </td>
-                                            <td>
-                                                Peter Meggik
-                                            </td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                $ 77.99
-                                            </td>
-                                            <td class="text-danger"> 53.45%
-                                                <i class="mdi mdi-arrow-down"></i>
-                                            </td>
-                                            <td>
-                                                May 15, 2015
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-medium">
-                                                5
-                                            </td>
-                                            <td>
-                                                Edward
-                                            </td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                $ 160.25
-                                            </td>
-                                            <td class="text-success"> 18.32%
-                                                <i class="mdi mdi-arrow-up"></i>
-                                            </td>
-                                            <td>
-                                                May 03, 2015
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-medium">
-                                                6
-                                            </td>
-                                            <td>
-                                                Henry Tom
-                                            </td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                $ 150.00
-                                            </td>
-                                            <td class="text-danger"> 24.67%
-                                                <i class="mdi mdi-arrow-down"></i>
-                                            </td>
-                                            <td>
-                                                June 16, 2015
-                                            </td>
-                                        </tr>
+                                        @foreach($orders as $order)
+                                            <tr>
+                                                <td class="font-weight-medium">
+                                                    {{$order->order_id}}
+                                                </td>
+                                                <td>
+                                                    {{$order->klant}}
+                                                </td>
+                                                <td>
+                                                    @if($order->order_status == 'In afwachting')
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+                                                                 aria-valuemax="100"></div>
+                                                        </div>
+                                                    @elseif($order->order_status == 'Verwerken')
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0"
+                                                                 aria-valuemax="100"></div>
+                                                        </div>
+                                                    @elseif($order->order_status == 'Compleet')
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+                                                                 aria-valuemax="100"></div>
+                                                        </div>
+                                                    @elseif($order->order_status == 'Geannuleerd')
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+                                                                 aria-valuemax="100"></div>
+                                                        </div>
+                                                    @endif
+
+                                                </td>
+                                                <td>
+                                                    {{$order->betaal_status}}
+                                                </td>
+                                                @if($order->verzend_status == 'Nog niet verzonden')
+                                                    <td class="text-primary">
+                                                        {{$order->verzend_status}}
+                                                    </td>
+                                                @elseif($order->verzend_status == 'Verzonden')
+                                                    <td class="text-warning">
+                                                        {{$order->verzend_status}}
+                                                    </td>
+                                                @elseif($order->verzend_status == 'Afgeleverd')
+                                                    <td class="text-success">
+                                                        {{$order->verzend_status}}
+                                                    </td>
+                                                @endif
+                                                <td>
+                                                    {{$order->created_at}}
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Nieuw naar oud</span></div>
+                                    <div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Bekijk alle Orders</a></div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- END RECENT PURCHASES -->
                     </div>
+
                 </div>
                 <div class="row">
                     <div class="col-12 grid-margin">
@@ -1065,7 +920,7 @@
         // panel collapse/expand
         var affectedElement = $('.panel-body');
 
-        $('.panel .btn-toggle-collapse').clickToggle(
+        $('#panel2 .btn-toggle-collapse').clickToggle(
             function(e) {
                 e.preventDefault();
 
@@ -1074,8 +929,8 @@
                     affectedElement = $('.slimScrollDiv');
                 }
 
-                $( ".panel-body" ).slideUp( "slow", function() {
-                    $('.panel').css('width', '600px');
+                $( "#panel_body2" ).slideUp( "slow", function() {
+                    $('#panel2').css('width', '600px');
                 });
 
                 $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
@@ -1088,8 +943,38 @@
                     affectedElement = $('.slimScrollDiv');
                 }
 
-                $( ".panel-body" ).slideDown( "slow", function(){
-                    $('.panel').css('width', '600px');
+                $( "#panel_body2" ).slideDown( "slow", function(){
+                    $('#panel2').css('width', '600px');
+                });
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            }
+        );
+
+        $('#panel .btn-toggle-collapse2').clickToggle(
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('#panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body" ).slideUp( "slow", function() {
+                    $('#panel').css('width', '100%');
+                });
+
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            },
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('#panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body" ).slideDown( "slow", function(){
+                    $('#panel').css('width', '100%');
                 });
                 $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
             }
@@ -1209,6 +1094,64 @@
         });
 
     }
+
+    $('#users_click').clickToggle(
+        function(e) {
+            e.preventDefault();
+
+            // if has scroll
+            if( $(this).parents('#card_buttons').find('.slimScrollDiv').length > 0 ) {
+                affectedElement = $('.slimScrollDiv');
+            }
+
+            $( "#card_buttons" ).animate({'width': '83px'},function () {
+               document.getElementById('card2').style.display = 'none';
+                document.getElementById('card3').style.display = 'none';
+                document.getElementById('card4').style.display = 'none';
+                document.getElementById('card5').style.display = 'none';
+                document.getElementById('card6').style.display = 'none';
+                document.getElementById('card7').style.display = 'none';
+
+                document.getElementById('users_straat').style.display = 'block';
+                document.getElementById('users_straat2').style.display = 'block';
+                document.getElementById('arrow-rightt').style.display = 'block';
+
+            });
+            $( "#card_buttons2" ).animate({'width': '280px'});
+
+            $( "#panel2" ).animate({'margin-left': '-460px', 'width': '1000px'});
+
+
+        });
+
+    $('#arrow-rightt').clickToggle(
+        function(e) {
+            e.preventDefault();
+
+            // if has scroll
+            if( $(this).parents('#card_buttons').find('.slimScrollDiv').length > 0 ) {
+                affectedElement = $('.slimScrollDiv');
+            }
+
+            $( "#card_buttons" ).animate({'width': '100%'},function () {
+                document.getElementById('card2').style.display = 'block';
+                document.getElementById('card3').style.display = 'block';
+                document.getElementById('card4').style.display = 'block';
+                document.getElementById('card5').style.display = 'block';
+                document.getElementById('card6').style.display = 'block';
+                document.getElementById('card7').style.display = 'block';
+
+                document.getElementById('users_straat').style.display = 'none';
+                document.getElementById('users_straat2').style.display = 'none';
+                document.getElementById('arrow-rightt').style.display = 'none';
+
+            });
+            $( "#card_buttons2" ).animate({'width': '100%'});
+
+            $( "#panel2" ).animate({'margin-left': '', 'width': '100%'});
+
+
+        });
 </script>
 </body>
 
