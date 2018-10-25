@@ -120,7 +120,7 @@ Route::post('/language', array(
 Route::get('/admin-portal/home', 'AdminController@adminportal')->name('admin-portal');
 
 Route::get('/admin-portal/users','SearchController@index');
-
+Route::get('/admin-portal/users/{id}','SearchController@userdata');
 Route::get('/search','SearchController@search');
 
 Route::get('/{lang?}', 'LanguageLocalizationController@index');

@@ -21,6 +21,15 @@ class SearchController extends Controller
         return view('admin-portal.users')->with('producten', $producten);
     }
 
+    public function userdata($id)
+
+    {
+        $userdata= DB::table('users')->where('id', $id)->get();
+        $orderdata= DB::table('orders')->where('user_id', $id)->get();
+
+        return view('admin-portal.userdata')->with('userdata', $userdata)->with('orderdata', $orderdata);
+    }
+
     public function search(Request $request)
 
     {
@@ -31,7 +40,7 @@ class SearchController extends Controller
 
             $output="";
 
-            $products= DB::table('users')->where('name','LIKE','%'.$request->search."%")->orWhere('id','LIKE','%'.$request->search."%")->orWhere('plaats','LIKE','%'.$request->search."%")->paginate(14);
+            $products= DB::table('users')->where('name','LIKE','%'.$request->search."%")->orWhere('lastname','LIKE','%'.$request->search."%")->orWhere('id','LIKE','%'.$request->search."%")->orWhere('plaats','LIKE','%'.$request->search."%")->orWhere('user_level','LIKE','%'.$request->search."%")->paginate(14);
 
             if($products)
 
@@ -43,7 +52,7 @@ class SearchController extends Controller
 
                         '<td>'.$product->id.'</td>'.
 
-                        '<td>'.$product->name.'</td>'.
+                        '<td>'.$product->name. ' ' .$product->lastname. '</td>'.
 
                         '<td>'.$product->telefoon.'</td>'.
 
@@ -52,6 +61,8 @@ class SearchController extends Controller
                         '<td>'.$product->straat.'</td>'.
 
                         '<td>'.$product->plaats. ', ' .$product->postcode. '</td>'.
+
+                        '<td>'.$product->user_level.'</td>'.
 
                         '<td>'.$product->created_at.'</td>'.
 
