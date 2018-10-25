@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Surat;
 use Carbon;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -32,13 +33,37 @@ class AdminController extends Controller
 
         $count_werknemers = Surat::where('user_level', 'Werknemer')->count();
 
-        $orders = DB::table('orders')->get();
+        $category_producten = DB::table('producten_category')->paginate(5);
+        $orders = DB::table('orders')->paginate(2);
+        $rols = DB::table('rollen')->get();
+        $producten = DB::table('producten_velgen')->paginate(2);
+
 
         $date = new Carbon\Carbon;
         $date->subWeek();
-        $week = DB::table('users')->where('created_at', '>', $date->toDateTimeString())->get();
-        return view('admin-portal.home')->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders);
+        $week = DB::table('users')->paginate(5);
+        return view('admin-portal.home', compact('category_producten', 'producten'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
 }
+
+    public function admin_users(){
+        $count = Surat::count();
+        $count_products = products::count();
+        $count_orders = orders::count();
+
+        $count_werknemers = Surat::where('user_level', 'Werknemer')->count();
+
+        $category_producten = DB::table('producten_category')->paginate(5);
+        $orders = DB::table('orders')->paginate(2);
+        $rols = DB::table('rollen')->get();
+        $producten = DB::table('producten_velgen')->paginate(2);
+
+
+        $date = new Carbon\Carbon;
+        $date->subWeek();
+        $week = DB::table('users')->paginate(5);
+        return view('admin-portal.users', compact('category_producten', 'producten'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
+    }
+
     public function categorie(){
 
         $category_producten = DB::table('producten_category')->get();

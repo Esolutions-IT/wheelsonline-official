@@ -36,6 +36,17 @@
         .sidebar .nav .nav{
             background-color:white;
         }
+        .users {cursor: pointer;}
+        .orders {cursor: pointer;}
+        .rollen {cursor: pointer;}
+        .onorders {cursor: pointer;}
+        .best {cursor: pointer;}
+        .cat {cursor: pointer;}
+        .nieuw {cursor: pointer;}
+
+        .pagination{
+            margin:0px 0;
+        }
     </style>
 </head>
 
@@ -286,7 +297,7 @@
                     <div class="collapse" id="klanten">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/buttons.html">Klanten</a>
+                                <a class="nav-link" href="{{url('/admin-portal/users')}}">Klanten</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="pages/ui-features/typography.html">Klant Rollen</a>
@@ -438,7 +449,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
                     <div class="col-lg-7 grid-margin stretch-card" style="height:200px;">
                         <!--weather card-->
                         <div class="card card-weather">
@@ -464,43 +474,44 @@
                                 var days = ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"];
                                 document.getElementById("day").innerHTML = days[d.getDay()];
 
-                                var months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
-                                document.getElementById("maand").innerHTML = months[d.getMonth()]+ ", " + d.getFullYear() + " Nederland";
+                                var months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
+                                document.getElementById("maand").innerHTML = d.getDate() + " " + months [d.getMonth()]+ " " + d.getFullYear() + ", " + d.getHours() + ":" + d.getMinutes();
 
                             </script>
                             <div class="card-body p-0" style="margin-top:-70px;" id="card_buttons">
                                 <div class="d-flex weakly-weather">
-                                    <div class="weakly-weather-item" id="users_click">
+                                    <div class="weakly-weather-item users" id="users_click">
                                         <i class="fas fa-users" style="font-size:40px;"></i>
                                         <p class="mb-1" style="font-size:10px; margin-top:5px;">Users</p>
                                     </div>
-                                    <div class="weakly-weather-item" id="card2">
-                                        <i class="fas fa-award" style="font-size:40px;"></i>
-                                        <p class="mb-1" style="font-size:10px; margin-top:5px;">Rollen</p>
-                                    </div>
-                                    <div class="weakly-weather-item" id="card3">
+                                    <div class="weakly-weather-item orders" id="card3">
                                         <i class="fas fa-check" style="font-size:40px;"></i>
                                         <p class="mb-1" style="font-size:10px; margin-top:5px;">Orders</p>
                                     </div>
-                                    <div class="weakly-weather-item" id="card4">
+                                    <div class="weakly-weather-item orders" id="card4">
                                         <i class="far fa-times-circle" style="font-size:40px;"></i>
                                         <p class="mb-1" style="font-size:9px; margin-top:5px;">Onafgeronde orders</p>
                                     </div>
-                                    <div class="weakly-weather-item" id="card5">
-                                        <i class="fas fa-cart-arrow-down" style="font-size:40px;"></i>
-                                        <p class="mb-1" style="font-size:10px; margin-top:5px;">Bestsellers</p>
+                                    <div class="weakly-weather-item rollen" id="card2">
+                                        <i class="fas fa-award" style="font-size:40px;"></i>
+                                        <p class="mb-1" style="font-size:10px; margin-top:5px;">Rollen</p>
                                     </div>
-                                    <div class="weakly-weather-item" id="card6">
+                                    <div class="weakly-weather-item cat" id="card6">
                                         <i class="fas fa-archive" style="font-size:40px;"></i>
                                         <p class="mb-1" style="font-size:10px; margin-top:5px;">Categorieën</p>
                                     </div>
-                                    <div class="weakly-weather-item" id="card7">
+                                    <div class="weakly-weather-item nieuw" id="card7">
                                         <i class="fas fa-book" style="font-size:40px;"></i>
                                         <p class="mb-1" style="font-size:9px; margin-top:5px;">Nieuwste Producten</p>
                                     </div>
+                                    <div class="weakly-weather-item best" id="card5">
+                                        <i class="fas fa-cart-arrow-down" style="font-size:40px;"></i>
+                                        <p class="mb-1" style="font-size:10px; margin-top:5px;">Bestsellers</p>
+                                    </div>
                                 </div>
                             </div>
-                            <i class="fas fa-arrow-right" id="arrow-rightt" style="font-size:30px; display: none"></i>
+                            <i class="fas fa-arrow-right" id="arrow-rightt" style="font-size:30px; display: none; cursor: pointer; z-index: 99999;"></i>
+                            <p id="text_onderdeel" style="text-align: center; margin-top:30px; display:block;">Klik hierboven op een onderdeel om erheen te gaan!</p>
                         </div>
                         <!--weather card ends-->
                     </div>
@@ -511,6 +522,7 @@
                                     <div class="right">
                                         <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
                                         <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+
                                     </div>
                                 </div>
                                 <div class="panel-body no-padding" id="panel_body2">
@@ -541,18 +553,16 @@
                                 </div>
                                 <div class="panel-footer">
                                     <div class="row">
-                                        <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Laatste 7 dagen</span></div>
+                                        <?php echo $week->render(); ?>
                                         <div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Bekijk alle users</a></div>
                                     </div>
                                 </div>
                             </div>
                             <!-- END RECENT PURCHASES -->
                         </div>
-                    </div>
-                <div class="row">
-                    <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="col-lg-7 grid-margin stretch-card">
                         <div class="panel" id="panel" style="width:100%!important;">
-                            <div class="panel-heading">
+                            <div class="panel-heading orders_panel" id="orders">
                                 <h3 class="panel-title">Orders</h3>
                                 <div class="right">
                                     <button type="button" class="btn-toggle-collapse2"><i class="lnr lnr-chevron-up"></i></button>
@@ -597,28 +607,7 @@
                                                     {{$order->klant}}
                                                 </td>
                                                 <td>
-                                                    @if($order->order_status == 'In afwachting')
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-                                                                 aria-valuemax="100"></div>
-                                                        </div>
-                                                    @elseif($order->order_status == 'Verwerken')
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0"
-                                                                 aria-valuemax="100"></div>
-                                                        </div>
-                                                    @elseif($order->order_status == 'Compleet')
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-                                                                 aria-valuemax="100"></div>
-                                                        </div>
-                                                    @elseif($order->order_status == 'Geannuleerd')
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-                                                                 aria-valuemax="100"></div>
-                                                        </div>
-                                                    @endif
-
+                                                   {{$order->order_status}}
                                                 </td>
                                                 <td>
                                                     {{$order->betaal_status}}
@@ -647,7 +636,7 @@
                             </div>
                             <div class="panel-footer">
                                 <div class="row">
-                                    <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Nieuw naar oud</span></div>
+                                    <?php echo $orders->render(); ?>
                                     <div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Bekijk alle Orders</a></div>
                                 </div>
                             </div>
@@ -655,154 +644,308 @@
                         <!-- END RECENT PURCHASES -->
                     </div>
 
-                </div>
-                <div class="row">
-                    <div class="col-12 grid-margin">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title mb-4">Manage Tickets</h5>
-                                <div class="fluid-container">
-                                    <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">
-                                        <div class="col-md-1">
-                                            <img class="img-sm rounded-circle mb-4 mb-md-0" src="images/faces/face1.jpg" alt="profile image">
-                                        </div>
-                                        <div class="ticket-details col-md-9">
-                                            <div class="d-flex">
-                                                <p class="text-dark font-weight-semibold mr-2 mb-0 no-wrap">James :</p>
-                                                <p class="text-primary mr-1 mb-0">[#23047]</p>
-                                                <p class="mb-0 ellipsis">Donec rutrum congue leo eget malesuada.</p>
-                                            </div>
-                                            <p class="text-gray ellipsis mb-2">Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim
-                                                vivamus.
-                                            </p>
-                                            <div class="row text-gray d-md-flex d-none">
-                                                <div class="col-4 d-flex">
-                                                    <small class="mb-0 mr-2 text-muted text-muted">Last responded :</small>
-                                                    <small class="Last-responded mr-2 mb-0 text-muted text-muted">3 hours ago</small>
-                                                </div>
-                                                <div class="col-4 d-flex">
-                                                    <small class="mb-0 mr-2 text-muted text-muted">Due in :</small>
-                                                    <small class="Last-responded mr-2 mb-0 text-muted text-muted">2 Days</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ticket-actions col-md-2">
-                                            <div class="btn-group dropdown">
-                                                <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Manage
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-reply fa-fw"></i>Quick reply</a>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-history fa-fw"></i>Another action</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-check text-success fa-fw"></i>Resolve Issue</a>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-times text-danger fa-fw"></i>Close Issue</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">
-                                        <div class="col-md-1">
-                                            <img class="img-sm rounded-circle mb-4 mb-md-0" src="images/faces/face2.jpg" alt="profile image">
-                                        </div>
-                                        <div class="ticket-details col-md-9">
-                                            <div class="d-flex">
-                                                <p class="text-dark font-weight-semibold mr-2 mb-0 no-wrap">Stella :</p>
-                                                <p class="text-primary mr-1 mb-0">[#23135]</p>
-                                                <p class="mb-0 ellipsis">Curabitur aliquet quam id dui posuere blandit.</p>
-                                            </div>
-                                            <p class="text-gray ellipsis mb-2">Pellentesque in ipsum id orci porta dapibus. Sed porttitor lectus nibh. Curabitur non nulla sit amet
-                                                nisl.
-                                            </p>
-                                            <div class="row text-gray d-md-flex d-none">
-                                                <div class="col-4 d-flex">
-                                                    <small class="mb-0 mr-2 text-muted">Last responded :</small>
-                                                    <small class="Last-responded mr-2 mb-0 text-muted">3 hours ago</small>
-                                                </div>
-                                                <div class="col-4 d-flex">
-                                                    <small class="mb-0 mr-2 text-muted">Due in :</small>
-                                                    <small class="Last-responded mr-2 mb-0 text-muted">2 Days</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ticket-actions col-md-2">
-                                            <div class="btn-group dropdown">
-                                                <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Manage
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-reply fa-fw"></i>Quick reply</a>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-history fa-fw"></i>Another action</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-check text-success fa-fw"></i>Resolve Issue</a>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-times text-danger fa-fw"></i>Close Issue</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row ticket-card mt-3">
-                                        <div class="col-md-1">
-                                            <img class="img-sm rounded-circle mb-4 mb-md-0" src="images/faces/face3.jpg" alt="profile image">
-                                        </div>
-                                        <div class="ticket-details col-md-9">
-                                            <div class="d-flex">
-                                                <p class="text-dark font-weight-semibold mr-2 mb-0 no-wrap">John Doe :</p>
-                                                <p class="text-primary mr-1 mb-0">[#23246]</p>
-                                                <p class="mb-0 ellipsis">Mauris blandit aliquet elit, eget tincidunt nibh pulvinar.</p>
-                                            </div>
-                                            <p class="text-gray ellipsis mb-2">Nulla quis lorem ut libero malesuada feugiat. Proin eget tortor risus. Lorem ipsum dolor sit amet.</p>
-                                            <div class="row text-gray d-md-flex d-none">
-                                                <div class="col-4 d-flex">
-                                                    <small class="mb-0 mr-2 text-muted">Last responded :</small>
-                                                    <small class="Last-responded mr-2 mb-0 text-muted">3 hours ago</small>
-                                                </div>
-                                                <div class="col-4 d-flex">
-                                                    <small class="mb-0 mr-2 text-muted">Due in :</small>
-                                                    <small class="Last-responded mr-2 mb-0 text-muted">2 Days</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ticket-actions col-md-2">
-                                            <div class="btn-group dropdown">
-                                                <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Manage
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-reply fa-fw"></i>Quick reply</a>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-history fa-fw"></i>Another action</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-check text-success fa-fw"></i>Resolve Issue</a>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fa fa-times text-danger fa-fw"></i>Close Issue</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="col-lg-5 grid-margin stretch-card">
+                        <div class="panel" id="panel5" style="width:100%!important;">
+                            <div class="panel-heading orders_panel" id="orders">
+                                <h3 class="panel-title">Onafgeronde Orders</h3>
+                                <div class="right">
+                                    <button type="button" class="btn-toggle-collapse5"><i class="lnr lnr-chevron-up"></i></button>
+                                    <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                                </div>
+                            </div>
+                            <div class="panel-body no-padding" id="panel_body5">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Order ID
+                                            </th>
+
+                                            <th>
+                                                Klant
+                                            </th>
+
+                                            <th>
+                                                Aangemaakt op
+
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($orders as $order)
+                                            <tr>
+                                                <td class="font-weight-medium">
+                                                    {{$order->order_id}}
+                                                </td>
+                                                <td>
+                                                    {{$order->klant}}
+                                                </td>
+                                                <td>
+                                                    {{$order->created_at}}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <?php echo $orders->render(); ?>
+                                    <div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Bekijk alle Orders</a></div>
                                 </div>
                             </div>
                         </div>
+                        <!-- END RECENT PURCHASES -->
                     </div>
+
+                    <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="panel" id="panel3" style="width:100%!important;">
+                            <div class="panel-heading" id="rollen">
+                                <h3 class="panel-title">Gebruikers Rollen</h3>
+                                <div class="right">
+                                    <button type="button" class="btn-toggle-collapse3"><i class="lnr lnr-chevron-up"></i></button>
+                                    <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                                </div>
+                            </div>
+                            <div class="panel-body no-padding" id="panel_body3">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Rol ID
+                                            </th>
+
+                                            <th>
+                                                Rol naam
+                                            </th>
+
+                                            <th>
+                                                Actief
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($rols as $rollen)
+                                            <tr>
+                                                <td class="font-weight-medium">
+                                                    {{$rollen->rol_id}}
+                                                </td>
+                                                <td>
+                                                    {{$rollen->rol_naam}}
+                                                </td>
+                                                <td>
+                                                    {{$rollen->actief}}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END RECENT PURCHASES -->
+                    </div>
+                    <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="panel catt" id="panel4" style="width:100%!important;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Categorieën</h3>
+                                <div class="right">
+                                    <button type="button" class="btn-toggle-collapse4"><i class="lnr lnr-chevron-up"></i></button>
+                                    <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                                </div>
+                            </div>
+                            <div class="panel-body no-padding" id="panel_body4">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Categorie ID
+                                            </th>
+
+                                            <th>
+                                                Categorie naam
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($category_producten as $cat)
+                                            <tr>
+                                                <td class="font-weight-medium">
+                                                    {{$cat->category_id}}
+                                                </td>
+                                                <td>
+                                                    {{$cat->category_name}}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <?php echo $category_producten->render(); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END RECENT PURCHASES -->
+                    </div>
+
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="panel np" id="panel6" style="width:100%!important;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Nieuwste Producten</h3>
+                            <div class="right">
+                                <button type="button" class="btn-toggle-collapse6"><i class="lnr lnr-chevron-up"></i></button>
+                                <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel-body no-padding" id="panel_body6">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            Product ID
+                                        </th>
+
+                                        <th>
+                                            Product naam
+                                        </th>
+                                        <th>
+                                            Prijs
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+                                        <th>
+                                            Categorie
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($producten as $products)
+                                        <tr>
+                                            <td class="font-weight-medium">
+                                                {{$products->product_id}}
+                                            </td>
+                                            <td>
+                                                {{$products->product_name}}
+                                            </td>
+                                            <td>
+                                                {{$products->prijs}}
+                                            </td>
+                                            @if($products->status == 'Op voorraad')
+                                                <td style="color:#00ce68;">
+                                                    {{$products->status}}
+                                                </td>
+                                            @endif
+                                            <td>
+                                                {{$products->icoontjes}}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <?php echo $producten->render();?>
+                                <div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Bekijk alle Producten</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END RECENT PURCHASES -->
                 </div>
+
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="panel np" id="panel7" style="width:100%!important;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Bestsellers</h3>
+                            <div class="right">
+                                <button type="button" class="btn-toggle-collapse7"><i class="lnr lnr-chevron-up"></i></button>
+                                <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel-body no-padding" id="panel_body7">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            Product ID
+                                        </th>
+
+                                        <th>
+                                            Product naam
+                                        </th>
+                                        <th>
+                                            Prijs
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+                                        <th>
+                                            Categorie
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($producten as $products)
+                                        <tr>
+                                            <td class="font-weight-medium">
+                                                {{$products->product_id}}
+                                            </td>
+                                            <td>
+                                                {{$products->product_name}}
+                                            </td>
+                                            <td>
+                                                {{$products->prijs}}
+                                            </td>
+                                            @if($products->status == 'Op voorraad')
+                                            <td style="color:#00ce68;">
+                                                {{$products->status}}
+                                            </td>
+                                            @endif
+                                            <td>
+                                                {{$products->icoontjes}}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <?php echo $producten->render();?>
+                                <div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Bekijk alle Bestsellers</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END RECENT PURCHASES -->
+                </div>
+
+                </div>
+
             </div>
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
             <footer class="footer">
                 <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
-              <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
-              <i class="mdi mdi-heart text-danger"></i>
+              <a href="http://www.bootstrapdash.com/" target="_blank">wheelsonline</a>. All rights reserved.</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">made by Esolutions-IT
             </span>
                 </div>
             </footer>
@@ -980,6 +1123,155 @@
             }
         );
 
+        $('#panel3 .btn-toggle-collapse3').clickToggle(
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body3" ).slideUp( "slow", function() {
+                    $('#panel3').css('width', '600px');
+                });
+
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            },
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body3" ).slideDown( "slow", function(){
+                    $('#panel3').css('width', '600px');
+                });
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            }
+        );
+
+        $('#panel4 .btn-toggle-collapse4').clickToggle(
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body4" ).slideUp( "slow", function() {
+                    $('#panel4').css('width', '100%');
+                });
+
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            },
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body4" ).slideDown( "slow", function(){
+                    $('#panel4').css('width', '100%');
+                });
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            }
+        );
+
+        $('#panel5 .btn-toggle-collapse5').clickToggle(
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body5" ).slideUp( "slow", function() {
+                    $('#panel5').css('width', '100%');
+                });
+
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            },
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body5" ).slideDown( "slow", function(){
+                    $('#panel5').css('width', '100%');
+                });
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            }
+        );
+
+        $('#panel6 .btn-toggle-collapse6').clickToggle(
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body6" ).slideUp( "slow", function() {
+                    $('#panel6').css('width', '100%');
+                });
+
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            },
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body6" ).slideDown( "slow", function(){
+                    $('#panel6').css('width', '100%');
+                });
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            }
+        );
+
+        $('#panel7 .btn-toggle-collapse7').clickToggle(
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body7" ).slideUp( "slow", function() {
+                    $('#panel7').css('width', '100%');
+                });
+
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            },
+            function(e) {
+                e.preventDefault();
+
+                // if has scroll
+                if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                    affectedElement = $('.slimScrollDiv');
+                }
+
+                $( "#panel_body7" ).slideDown( "slow", function(){
+                    $('#panel7').css('width', '100%');
+                });
+                $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+            }
+        );
 
         /*-----------------------------------/
         /*	PANEL SCROLLING
@@ -1115,6 +1407,7 @@
                 document.getElementById('users_straat').style.display = 'block';
                 document.getElementById('users_straat2').style.display = 'block';
                 document.getElementById('arrow-rightt').style.display = 'block';
+                document.getElementById('text_onderdeel').style.display = 'none';
 
             });
             $( "#card_buttons2" ).animate({'width': '280px'});
@@ -1144,6 +1437,7 @@
                 document.getElementById('users_straat').style.display = 'none';
                 document.getElementById('users_straat2').style.display = 'none';
                 document.getElementById('arrow-rightt').style.display = 'none';
+                document.getElementById('text_onderdeel').style.display = 'block';
 
             });
             $( "#card_buttons2" ).animate({'width': '100%'});
@@ -1152,6 +1446,28 @@
 
 
         });
+
+    $(".orders").click(function() {
+        $('html,body').animate({
+                scrollTop: $(".orders_panel").offset().top},
+            'slow');
+    });
+    $(".rollen").click(function() {
+        $('html,body').animate({
+                scrollTop: $("#rollen").offset().top},
+            'slow');
+    });
+
+    $(".cat").click(function() {
+        $('html,body').animate({
+                scrollTop: $(".catt").offset().top},
+            'slow');
+    });
+    $(".nieuw").click(function() {
+        $('html,body').animate({
+                scrollTop: $(".np").offset().top},
+            'slow');
+    });
 </script>
 </body>
 
