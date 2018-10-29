@@ -121,6 +121,8 @@ Route::get('/admin-portal/home', 'AdminController@adminportal')->name('admin-por
 
 Route::get('/admin-portal/users','SearchController@index');
 Route::get('/admin-portal/users/{id}','SearchController@userdata');
+Route::post('/admin-portal/users/update','SearchController@update');
+Route::post('/admin-portal/users/delete','SearchController@delete');
 Route::get('/search','SearchController@search');
 
 Route::get('/{lang?}', 'LanguageLocalizationController@index');

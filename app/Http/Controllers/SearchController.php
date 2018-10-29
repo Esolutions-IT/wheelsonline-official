@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 
 
+use App\orders;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,29 @@ class SearchController extends Controller
         $userdata= DB::table('users')->where('id', $id)->get();
         $orderdata= DB::table('orders')->where('user_id', $id)->get();
 
-        return view('admin-portal.userdata')->with('userdata', $userdata)->with('orderdata', $orderdata);
+        $count_orders = orders::where('user_id', $id)->count();
+
+        return view('admin-portal.userdata')->with('userdata', $userdata)->with('orderdata', $orderdata)->with('count_orders', $count_orders);
+    }
+
+    public function update(Request $request){
+        $data = ['name'=>$request->first_name,
+                 'lastname'=>$request->last_name,
+                 'telefoon'=>$request->phone,
+                 'email'=>$request->email,
+                 'straat'=>$request->straat,
+                 'plaats'=>$request->plaats,
+                 'postcode'=>$request->postcode,
+                 'actief'=>$request->actief,
+                 'nieuwsbrief'=>$request->nieuw,
+                 'btw_vrijgesteld'=>$request->btw];
+
+        DB::table('users')->where('id', $request->id)->update($data);
+        return redirect('/admin-portal/users/' .$request->id);
+    }
+    public function delete(Request $request){
+        DB::table('users')->where('id', $request->id)->delete();
+        return redirect('/admin-portal/users');
     }
 
     public function search(Request $request)

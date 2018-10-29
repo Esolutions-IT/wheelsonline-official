@@ -96,6 +96,42 @@
         font-weight: 600;
         color: #0062cc;
     }
+    input[type="checkbox"]{
+        position: relative;
+        width:40px;
+        height:20px;
+        -webkit-appearance: none;
+        background: #c6c6c6;
+        outline: none!important;
+        box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+        border-radius: 20px;
+        transition: .5s;
+    }
+    input:checked[type="checkbox"]{
+        background: #03a9f4;
+    }
+    input[type="checkbox"]:before{
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        top: 0;
+        left: 0;
+        background: #fff;
+        transform: scale(1.1);
+        box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        transition: .5s;
+    }
+    input:checked[type="checkbox"]:before{
+        Left: 20px;
+    }
+
+    #myDIV {
+        text-align: center;
+        display:none;
+        margin-top:-70px;
+    }
 </style>
     @foreach($userdata as $user)
     <div class="container bootstrap snippet">
@@ -121,11 +157,11 @@
 
 
                 <ul class="list-group">
-                    <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+                    <li class="list-group-item text-muted">AANTAL</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Orders</strong></span>{{$count_orders}}</li>
+                    {{--<li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>--}}
+                    {{--<li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>--}}
+                    {{--<li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>--}}
                 </ul>
 
 
@@ -205,7 +241,7 @@
                                             <p class="proile-rating"><span>{{$user->user_level}}</span></p>
                                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Over</a>
+                                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#over" role="tab" aria-controls="home" aria-selected="true">Over</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Adres</a>
@@ -217,21 +253,13 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="profile-work">
-                                            <p>WORK LINK</p>
-                                            <a href="">Website Link</a><br/>
-                                            <a href="">Bootsnipp Profile</a><br/>
-                                            <a href="">Bootply Profile</a>
-                                            <p>SKILLS</p>
-                                            <a href="">Web Designer</a><br/>
-                                            <a href="">Web Developer</a><br/>
-                                            <a href="">WordPress</a><br/>
-                                            <a href="">WooCommerce</a><br/>
-                                            <a href="">PHP, .Net</a><br/>
+                                            <p>LINKS</p>
+                                            <a href="https://{{$user->website}}">{{$user->website}}</a><br/>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="tab-content profile-tab" id="myTabContent">
-                                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                            <div class="tab-pane fade show active" id="over" role="tabpanel" aria-labelledby="home-tab">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <label>Volledige naam</label>
@@ -276,48 +304,26 @@
                                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <label>Experience</label>
+                                                        <label>Straat</label>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <p>Expert</p>
+                                                        <p>{{$user->straat}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <label>Hourly Rate</label>
+                                                        <label>Plaats</label>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <p>10$/hr</p>
+                                                        <p>{{$user->plaats}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <label>Total Projects</label>
+                                                        <label>Postcode</label>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <p>230</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <label>English Level</label>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <p>Expert</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <label>Availability</label>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <p>6 months</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <label>Your Bio</label><br/>
-                                                        <p>Your detail description</p>
+                                                        <p>{{$user->postcode}}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -331,18 +337,20 @@
 
 
                         <hr>
-                        <form class="form" action="##" method="post" id="registrationForm">
+                        <form class="form" action="{{URL::to('/admin-portal/users/update')}}" method="post" id="registrationForm">
+                            {{csrf_field()}}
+                            <input type="hidden" name="id" value="{{$user->id}}" />
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="first_name"><h4>First name</h4></label>
+                                    <label for="first_name"><h4>Voornaam</h4></label>
                                     <input type="text" class="form-control" name="first_name" id="first_name" value="{{$user->name}}" title="enter your first name if any.">
                                 </div>
                             </div>
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="last_name"><h4>Last name</h4></label>
+                                    <label for="last_name"><h4>Achternaam</h4></label>
                                     <input type="text" class="form-control" name="last_name" id="last_name" value="{{$user->lastname}}" title="enter your last name if any.">
                                 </div>
                             </div>
@@ -350,14 +358,14 @@
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="phone"><h4>Phone</h4></label>
+                                    <label for="phone"><h4>Telefoon Nummer</h4></label>
                                     <input type="text" class="form-control" name="phone" id="phone" value="{{$user->telefoon}}" title="enter your phone number if any.">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="mobile"><h4>Mobile</h4></label>
+                                    <label for="mobile"><h4>Mobiele Nummer</h4></label>
                                     <input type="text" class="form-control" name="mobile" id="mobile" title="enter your mobile number if any.">
                                 </div>
                             </div>
@@ -371,32 +379,82 @@
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="email"><h4>Location</h4></label>
-                                    <input type="email" class="form-control" id="location" title="enter a location">
+                                    <label for="email"><h4>Straat + Huisnummer</h4></label>
+                                    <input type="text" class="form-control" id="location" name="straat" value="{{$user->straat}}" title="enter a location">
                                 </div>
                             </div>
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="password"><h4>Password</h4></label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                                    <label for="email"><h4>Plaats</h4></label>
+                                    <input type="text" class="form-control" id="location" name="plaats" value="{{$user->plaats}}" title="enter a location">
                                 </div>
                             </div>
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="password2"><h4>Verify</h4></label>
-                                    <input type="password" class="form-control" name="password2" id="password2" placeholder="Herhaal password" title="enter your password2.">
+                                    <label for="email"><h4>Postcode</h4></label>
+                                    <input type="text" class="form-control" id="location" name="postcode" value="{{$user->postcode}}" title="enter a location">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <br>
+                                    <label for="email"><h6 style="font-size:14px; margin-top:7px; padding-right:50px;">Is BTW vrijgesteld</h6></label>
+                                    @if($user->btw_vrijgesteld == 'on')
+                                        <input type="checkbox" name="btw" checked>
+                                    @else
+                                        <input type="checkbox" name="btw">
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="email"><h6 style="font-size:14px; margin-top:7px; padding-right:88px;">Nieuwsbrief</h6></label>
+                                    @if($user->nieuwsbrief == 'on')
+                                        <input type="checkbox" name="nieuw" checked>
+                                    @else
+                                        <input type="checkbox" name="nieuw">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="email"><h6 style="font-size:14px; margin-top:7px; padding-right:129px;">Actief</h6></label>
+                                    @if($user->actief == 'on')
+                                        <input type="checkbox" name="actief" checked>
+                                    @else
+                                        <input type="checkbox" name="actief">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-2">
                                     <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                    <button class="btn btn-lg btn-danger" type="reset"><i class="glyphicon glyphicon-trash"></i>Verwijder</button>
+
                                 </div>
                             </div>
                         </form>
+                                <div class="form-group">
+                                    <div class="col-xs-2">
+                                        <button class="btn btn-lg btn-danger" onclick="myFunction()"><i class="glyphicon glyphicon-trash"></i>Verwijder</button>
+                                    </div>
+                                </div>
+
+                        <div class="col-xs-8">
+
+                            <div id="myDIV">
+                                Weet u zeker dat u <b>{{$user->name}} {{$user->lastname}}</b> wilt verwijderen?<br />
+                                <form action="{{URL::to('/admin-portal/users/delete')}}" method="post">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="id" value="{{$user->id}}" />
+                                    <button class="btn btn-success" type="submit"><i class="fa fa-check"></i></button>
+                                    <button class="btn btn-danger" onclick="cancel()" type="reset"><i class="fa fa-times"></i></button>
+                                </form>
+                            </div>
+                        </div>
+
+                        {{--</form>--}}
                     </div>
 
                 </div><!--/tab-pane-->
@@ -404,5 +462,24 @@
 
         </div><!--/col-9-->
     </div><!--/row-->
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display == "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+        function cancel() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
     @endforeach
 @endsection

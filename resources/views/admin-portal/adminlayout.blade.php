@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="_token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin Free Bootstrap Admin Dashboard Template</title>
+    <title>Wheelsonline - Admin Panel</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('public/css/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/vendor.bundle.base.css')}}">
