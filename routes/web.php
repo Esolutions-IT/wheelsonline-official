@@ -119,6 +119,18 @@ Route::post('/language', array(
 
 Route::get('/admin-portal/home', 'AdminController@adminportal')->name('admin-portal');
 
+Route::get('/admin-portal/rollen','AdminController@rollen');
+
+Route::get('/admin-portal/rollen/create','AdminController@create_rollen');
+
+Route::get('/admin-portal/rollen/edit/{id}','AdminController@edit_rol');
+Route::post('/admin-portal/rollen/geedit','AdminController@edited_rol');
+
+Route::post('/admin-portal/rollen/created','AdminController@created_rollen');
+
+Route::get('/admin-portal/users/create','AdminController@create_user');
+Route::post('/admin-portal/users/created','AdminController@save_user');
+
 Route::get('/admin-portal/users','SearchController@index');
 Route::get('/admin-portal/users/{id}','SearchController@userdata');
 Route::post('/admin-portal/users/update','SearchController@update');

@@ -10,6 +10,7 @@ use App\orders;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
+use App\User;
 use function Sodium\compare;
 
 
@@ -18,8 +19,9 @@ class SearchController extends Controller
     public function index()
 
     {
-        $producten= DB::table('users')->paginate(14);
-        return view('admin-portal.users')->with('producten', $producten);
+        $users= DB::table('users')->paginate(14);
+        $online = User::all();
+        return view('admin-portal.users', compact('online'))->with('users', $users);
     }
 
     public function userdata($id)

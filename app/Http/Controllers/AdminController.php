@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Surat;
 use Carbon;
 use App\User;
+use Illuminate\Support\Facades\URL;
 
 class AdminController extends Controller
 {
@@ -45,6 +46,32 @@ class AdminController extends Controller
         return view('admin-portal.home', compact('category_producten', 'producten'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
 }
 
+    public function create_user(){
+        $count = Surat::count();
+        $count_products = products::count();
+        $count_orders = orders::count();
+
+        $count_werknemers = Surat::where('user_level', 'Werknemer')->count();
+
+        $category_producten = DB::table('producten_category')->paginate(5);
+        $orders = DB::table('orders')->paginate(2);
+        $rols = DB::table('rollen')->get();
+        $producten = DB::table('producten_velgen')->paginate(2);
+
+
+        $date = new Carbon\Carbon;
+        $date->subWeek();
+        $week = DB::table('users')->paginate(5);
+        return view('admin-portal.create_users', compact('category_producten', 'producten'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
+    }
+
+    public function save_user(Request $request){
+        $data = ['name'=>$request->firstname, 'lastname'=>$request->lastname, 'geboorte_datum'=>$request->gdatum, 'user_level'=>$request->rol, 'gender'=>$request->gender, 'btw_vrijgesteld'=>$request->btw, 'nieuwsbrief'=>$request->nieuw, 'actief'=>$request->actief, 'telefoon'=>$request->telefoon, 'mobiel'=>$request->mobiel, 'email'=>$request->email, 'website'=>$request->website, 'profile_picture'=>'./resources/assets/images/profile_picture/profiel.png', 'straat'=>$request->straat, 'plaats'=>$request->plaats, 'postcode'=>$request->postcode];
+
+        DB::table('users')->insert($data);
+        return redirect('/admin-portal/users');
+    }
+
     public function admin_users(){
         $count = Surat::count();
         $count_products = products::count();
@@ -62,6 +89,69 @@ class AdminController extends Controller
         $date->subWeek();
         $week = DB::table('users')->paginate(5);
         return view('admin-portal.users', compact('category_producten', 'producten'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
+    }
+
+    public function rollen(){
+        $count = Surat::count();
+        $count_products = products::count();
+        $count_orders = orders::count();
+
+        $count_werknemers = Surat::where('user_level', 'Werknemer')->count();
+
+        $category_producten = DB::table('producten_category')->paginate(5);
+        $orders = DB::table('orders')->paginate(2);
+        $rols = DB::table('rollen')->get();
+        $producten = DB::table('producten_velgen')->paginate(2);
+
+
+        $date = new Carbon\Carbon;
+        $date->subWeek();
+        $week = DB::table('users')->paginate(5);
+        return view('admin-portal.rollen', compact('category_producten', 'producten'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
+    }
+
+    public function create_rollen(){
+        $count = Surat::count();
+        $count_products = products::count();
+        $count_orders = orders::count();
+
+        $count_werknemers = Surat::where('user_level', 'Werknemer')->count();
+
+        $category_producten = DB::table('producten_category')->paginate(5);
+        $orders = DB::table('orders')->paginate(2);
+        $rols = DB::table('rollen')->get();
+        $producten = DB::table('producten_velgen')->paginate(2);
+
+
+        $date = new Carbon\Carbon;
+        $date->subWeek();
+        $week = DB::table('users')->paginate(5);
+        return view('admin-portal.create_rol', compact('category_producten', 'producten'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
+    }
+
+    public function created_rollen(Request $request){
+        $data = ['rol_naam'=>$request->rol, 'gratis_verzending'=>$request->gratis_verzending, 'btw_uitzondering'=>$request->btw_uitzondering, 'actief'=>$request->actief, 'in_systeem_rol'=>$request->is_systeem_rol];
+
+        DB::table('rollen')->insert($data);
+
+        return redirect('/admin-portal/rollen');
+    }
+    public function edit_rol($id)
+
+    {
+        $roldata= DB::table('rollen')->where('rol_id', $id)->get();
+
+        return view('admin-portal.edit_rols')->with('roldata', $roldata);
+    }
+
+    public function edited_rol(Request $request)
+
+    {
+        $data=['rol_naam'=>$request->rol, 'gratis_verzending'=>$request->gratis_verzending, 'btw_uitzondering'=>$request->btw_uitzondering, 'actief'=>$request->actief, 'in_systeem_rol'=>$request->is_systeem_rol];
+
+        DB::table('rollen')->where('rol_id', $request->id)->update($data);
+
+        return redirect('/admin-portal/rollen');
     }
 
     public function categorie(){

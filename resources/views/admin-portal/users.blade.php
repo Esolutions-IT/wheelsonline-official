@@ -4,7 +4,7 @@
                     <div class="col-md-12">
                         <a href="#" class="btn btn-default pull-right" style="margin-top:-15px;"><i class="glyphicon glyphicon glyphicon-download"></i> <strong>Exporteer naar Excel</strong></a>
                         <a href="#" class="btn btn-default pull-right" style="margin-top:-15px;"><i class="glyphicon glyphicon-file"></i> <strong>Exporteer naar XML</strong></a>
-                        <a href="#" class="btn btn-default pull-right" style="margin-top:-15px;"><i class="glyphicon glyphicon-pencil"></i> <strong>Nieuwe Toevoegen</strong></a>
+                        <a href="{{URL::to('/admin-portal/users/create')}}" class="btn btn-default pull-right" style="margin-top:-15px;"><i class="glyphicon glyphicon-pencil"></i> <strong>Nieuwe Toevoegen</strong></a>
                     </div>
                 </div>
                 <div class="container">
@@ -52,27 +52,27 @@
                                         </thead>
 
                                         <tbody>
-                                        @foreach ($producten as $key => $product)
+                                        @foreach ($users as $user)
                                             <tr>
-                                                <td>{{$product->id}}</td>
+                                                <td>{{$user->id}}</td>
 
-                                                <td>{{$product->name}} {{$product->lastname}}</td>
+                                                <td>{{$user->name}} {{$user->lastname}}</td>
 
-                                                <td>{{$product->telefoon}}</td>
+                                                <td>{{$user->telefoon}}</td>
 
-                                                <td>{{$product->email}}</td>
+                                                <td>{{$user->email}}</td>
 
-                                                <td>{{$product->straat}}</td>
+                                                <td>{{$user->straat}}</td>
 
-                                                <td>{{$product->plaats}}, {{$product->postcode}}</td>
+                                                <td>{{$user->plaats}}, {{$user->postcode}}</td>
 
-                                                <td>{{$product->user_level}}</td>
+                                                <td>{{$user->user_level}}</td>
 
-                                                <td>{{$product->created_at}}</td>
+                                                <td>{{$user->created_at}}</td>
 
                                                 <td>
                                                     <span class="input-group-btn">
-                                                        <a href="{{url('admin-portal/users/' .$product->id)}}">
+                                                        <a href="{{url('admin-portal/users/' .$user->id)}}">
                                                         <button class="btn btn-default" type="submit">
                                                             <i class="glyphicon glyphicon-pencil"></i>
                                                         </button>
@@ -91,7 +91,7 @@
                                         </tbody>
 
                                     </table>
-                                    <?php echo $producten->render(); ?>
+                                    <?php echo $users->render()?>
 
                                 </div>
 
@@ -102,4 +102,13 @@
                     </div>
 
                                 </div>
+    <h1>Online Users</h1>
+    @if($online)
+        @foreach($online as $on)
+            @if($on->isOnline())
+                <h1>{{$on->name}}</h1>
+            @endif
+        @endforeach
+    @endif
+
                             @endsection

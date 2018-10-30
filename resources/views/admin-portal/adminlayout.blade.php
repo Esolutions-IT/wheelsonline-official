@@ -310,7 +310,7 @@
                                 <a class="nav-link" href="{{url('/admin-portal/users')}}">Klanten</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/typography.html">Klant Rollen</a>
+                                <a class="nav-link" href="{{url('/admin-portal/rollen')}}">Klant Rollen</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="pages/ui-features/typography.html">Klanten Online</a>
