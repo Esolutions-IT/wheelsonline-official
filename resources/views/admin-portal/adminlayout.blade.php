@@ -252,7 +252,7 @@
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/buttons.html">Categorie</a>
+                                <a class="nav-link" href="{{URL::to('/admin-portal/categorie')}}">Categorie</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="pages/ui-features/typography.html">Fabrikanten</a>
@@ -284,12 +284,6 @@
                                 <a class="nav-link" href="pages/ui-features/typography.html">Retour Verzoeken</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/typography.html">Huidige Winkelwagens</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/typography.html">Huidige Verlanglijsten</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="pages/ui-features/typography.html">Bestsellers</a>
                             </li>
                             <li class="nav-item">
@@ -313,7 +307,7 @@
                                 <a class="nav-link" href="{{url('/admin-portal/rollen')}}">Klant Rollen</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/typography.html">Klanten Online</a>
+                                <a class="nav-link" href="{{url('/admin-portal/online')}}">Klanten Online</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="pages/ui-features/typography.html">Klant Rapporten</a>

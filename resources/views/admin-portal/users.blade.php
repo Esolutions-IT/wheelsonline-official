@@ -102,13 +102,6 @@
                     </div>
 
                                 </div>
-    <h1>Online Users</h1>
-    @if($online)
-        @foreach($online as $on)
-            @if($on->isOnline())
-                <h1>{{$on->name}}</h1>
-            @endif
-        @endforeach
-    @endif
+
 
                             @endsection

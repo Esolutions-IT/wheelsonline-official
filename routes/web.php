@@ -131,6 +131,12 @@ Route::post('/admin-portal/rollen/created','AdminController@created_rollen');
 Route::get('/admin-portal/users/create','AdminController@create_user');
 Route::post('/admin-portal/users/created','AdminController@save_user');
 
+Route::get('/admin-portal/online','AdminController@users_online');
+
+Route::get('/admin-portal/categorie','AdminController@categorieen');
+
+Route::get('/admin-portal/fabrikanten','AdminController@fabrikanten');
+
 Route::get('/admin-portal/users','SearchController@index');
 Route::get('/admin-portal/users/{id}','SearchController@userdata');
 Route::post('/admin-portal/users/update','SearchController@update');

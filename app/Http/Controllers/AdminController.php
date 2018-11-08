@@ -46,6 +46,25 @@ class AdminController extends Controller
         return view('admin-portal.home', compact('category_producten', 'producten'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
 }
 
+    public function fabrikanten(){
+        $count = Surat::count();
+        $count_products = products::count();
+        $count_orders = orders::count();
+
+        $count_werknemers = Surat::where('user_level', 'Werknemer')->count();
+
+        $category_producten = DB::table('producten_category')->paginate(5);
+        $orders = DB::table('orders')->paginate(2);
+        $rols = DB::table('rollen')->get();
+        $producten = DB::table('producten_velgen')->paginate(2);
+
+
+        $date = new Carbon\Carbon;
+        $date->subWeek();
+        $week = DB::table('users')->paginate(5);
+        return view('admin-portal.fabrikanten', compact('category_producten', 'producten'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
+    }
+
     public function create_user(){
         $count = Surat::count();
         $count_products = products::count();
@@ -63,6 +82,25 @@ class AdminController extends Controller
         $date->subWeek();
         $week = DB::table('users')->paginate(5);
         return view('admin-portal.create_users', compact('category_producten', 'producten'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
+    }
+
+    public function categorieen(){
+        $count = Surat::count();
+        $count_products = products::count();
+        $count_orders = orders::count();
+
+        $count_werknemers = Surat::where('user_level', 'Werknemer')->count();
+
+        $category_producten = DB::table('producten_category')->paginate(5);
+        $orders = DB::table('orders')->paginate(2);
+        $rols = DB::table('rollen')->get();
+        $categorie = DB::table('producten_category')->paginate(15);
+
+
+        $date = new Carbon\Carbon;
+        $date->subWeek();
+        $week = DB::table('users')->paginate(5);
+        return view('admin-portal.categorieen', compact('category_producten', 'producten', 'categorie'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
     }
 
     public function save_user(Request $request){
@@ -89,6 +127,27 @@ class AdminController extends Controller
         $date->subWeek();
         $week = DB::table('users')->paginate(5);
         return view('admin-portal.users', compact('category_producten', 'producten'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
+    }
+
+    public function users_online(){
+        $count = Surat::count();
+        $count_products = products::count();
+        $count_orders = orders::count();
+
+        $count_werknemers = Surat::where('user_level', 'Werknemer')->count();
+
+        $category_producten = DB::table('producten_category')->paginate(5);
+        $orders = DB::table('orders')->paginate(2);
+        $rols = DB::table('rollen')->get();
+        $producten = DB::table('producten_velgen')->paginate(2);
+
+
+        $date = new Carbon\Carbon;
+        $date->subWeek();
+        $week = DB::table('users')->paginate(5);
+
+        $online = User::all();
+        return view('admin-portal.online_users', compact('category_producten', 'producten', 'online'))->with('count', $count)->with('count_products', $count_products)->with('week', $week)->with('count_werknemers', $count_werknemers)->with('count_orders', $count_orders)->with('orders', $orders)->with('rols', $rols);
     }
 
     public function rollen(){
